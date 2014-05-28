@@ -1,6 +1,0 @@
-Links de Acceso Rápido:
-
-URL Repositorio: https://riouxsvn.com/svn/quegolazo
-
-
-URL ProyectoGestorDeCampeonatos: https://quegolazo.visualstudio.com/DefaultCollection/ProyectoGestorDeCampeonatos

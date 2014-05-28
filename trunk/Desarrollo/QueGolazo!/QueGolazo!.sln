@@ -1,0 +1,54 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2012
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "QueGolazo!", "QueGolazo!\QueGolazo!.csproj", "{15F04854-BA9F-4BC3-B64B-0A02A381F5D9}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Entidades", "Entidades\Entidades.csproj", "{7BDD4A16-AC0F-4D8C-ACAE-48D2E2F37EC2}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Logica", "Logica\Logica.csproj", "{28B86768-A223-4BB9-91D1-DD60ECE59DD8}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Utils", "Utils\Utils.csproj", "{538BBE77-1475-4136-9910-85A815F3C5A3}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UnitTests", "UnitTests\UnitTests.csproj", "{248B5DB4-31BD-48AD-8027-599094D9CCE5}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AccesoADatos", "AccesoADatos\AccesoADatos.csproj", "{5EAE8579-D4EC-448D-838F-93BBC5CF664E}"
+EndProject
+Global
+	GlobalSection(SubversionScc) = preSolution
+		Svn-Managed = True
+		Manager = AnkhSVN - Subversion Support for Visual Studio
+	EndGlobalSection
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{15F04854-BA9F-4BC3-B64B-0A02A381F5D9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{15F04854-BA9F-4BC3-B64B-0A02A381F5D9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{15F04854-BA9F-4BC3-B64B-0A02A381F5D9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{15F04854-BA9F-4BC3-B64B-0A02A381F5D9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7BDD4A16-AC0F-4D8C-ACAE-48D2E2F37EC2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7BDD4A16-AC0F-4D8C-ACAE-48D2E2F37EC2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7BDD4A16-AC0F-4D8C-ACAE-48D2E2F37EC2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7BDD4A16-AC0F-4D8C-ACAE-48D2E2F37EC2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{28B86768-A223-4BB9-91D1-DD60ECE59DD8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{28B86768-A223-4BB9-91D1-DD60ECE59DD8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{28B86768-A223-4BB9-91D1-DD60ECE59DD8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{28B86768-A223-4BB9-91D1-DD60ECE59DD8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{538BBE77-1475-4136-9910-85A815F3C5A3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{538BBE77-1475-4136-9910-85A815F3C5A3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{538BBE77-1475-4136-9910-85A815F3C5A3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{538BBE77-1475-4136-9910-85A815F3C5A3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{248B5DB4-31BD-48AD-8027-599094D9CCE5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{248B5DB4-31BD-48AD-8027-599094D9CCE5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{248B5DB4-31BD-48AD-8027-599094D9CCE5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{248B5DB4-31BD-48AD-8027-599094D9CCE5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5EAE8579-D4EC-448D-838F-93BBC5CF664E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5EAE8579-D4EC-448D-838F-93BBC5CF664E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5EAE8579-D4EC-448D-838F-93BBC5CF664E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5EAE8579-D4EC-448D-838F-93BBC5CF664E}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
