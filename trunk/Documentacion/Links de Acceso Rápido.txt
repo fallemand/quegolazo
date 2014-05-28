@@ -1,8 +1,8 @@
 Links de Acceso Rápido:
 
-URL Repositorio: https://riouxsvn.com/svn/quegolazo
+URL Repositorio: https://quegolazo.googlecode.com/svn/trunk/
 
-https://quegolazo.googlecode.com/svn/trunk/
+
 
 
 URL ProyectoGestorDeCampeonatos: https://quegolazo.visualstudio.com/DefaultCollection/ProyectoGestorDeCampeonatos
