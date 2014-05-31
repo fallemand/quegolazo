@@ -102,7 +102,7 @@ background: url(http://lh5.googleusercontent.com/-luDGEoQ_WZE/T1Ak-gta5MI/AAAAAA
                         </div>
                         <div class="panel-body">
                            
-                         
+                         <asp:Button ID="btnVolver" CssClass="btn btn-primary btn-lg" runat="server" Text="Volver"  OnClick="btnVolver_Click" />
                              <br/>
                               <h3>Ir a la fecha: <asp:DropDownList ID="ddlFechas" runat="server" OnSelectedIndexChanged="ddlFechas_SelectedIndexChanged" AutoPostBack="True"></asp:DropDownList></h3>     
                              <div class="row">
@@ -126,9 +126,9 @@ background: url(http://lh5.googleusercontent.com/-luDGEoQ_WZE/T1Ak-gta5MI/AAAAAA
                                                                  <ItemTemplate>
                                                                        <tr>
                                                                   
-                                                                                <td><%# Eval("equipoLocal.nombre") %></td><td></td>&nbsp&nbsp<td><%# Eval("golesLocal") %></td>
+                                                                                <td><%# Eval("equipoLocal.nombre") %></td><td>&nbsp&nbsp</td><td><%# Eval("golesLocal") %></td>
                                                                                 <td>--</td>
-                                                                                <td><%# Eval("golesVisitante") %></td><tb>&nbsp&nbsp</tb><td><%# Eval("equipoVisitante.nombre")%></td>
+                                                                                <td><%# Eval("golesVisitante") %></td><td>&nbsp&nbsp</td><td><%# Eval("equipoVisitante.nombre")%></td>
                                                                             </tr>
                                                                       
         

@@ -66,12 +66,13 @@
                                                                 <small>Tamaño de Cancha: <%# Eval("tamañoCancha.nombre")%></small><br />
                                                                 <small>Tipo de Superficie: <%# Eval("superficieDeCancha.nombre")%></small><br />
                                                                 <small>Tipo de Fixture: <%# Eval("tipoFixture.nombre")%></small><br />
+                                                                 <small>Sistema de Puntuación: <%# Eval("sistemaPuntuacion")%></small><br />
                                                               <%--  <asp:LinkButton ID="lnkFixture" runat="server" CommandName="VerFixture" CommandArgument='<%# Eval("idCampeonato") %>'>Ver Fixture</asp:LinkButton>--%>
                                                                     </div>
                                                            <div class="col-md-3">
-                                                                        <asp:Button runat="server" ID="btnGenerarFixture" Text="Generar Fixture" CommandName="GenerarFixture" CommandArgument='<%# Eval("idCampeonato") %>' CssClass="btn btn-primary btn-sm" CausesValidation="False" />
-                                                                <asp:Button runat="server" ID="btnVerFixture" Text="Ver Fixture" CommandName="VerFixture" CommandArgument='<%# Eval("idCampeonato") %>' CssClass="btn btn-primary btn-sm" CausesValidation="False" />
-                                                                <asp:Button runat="server" ID="btnCargarResultados" Text="Cargar Resultados" CommandName="CargarResultados" CommandArgument='<%# Eval("idCampeonato") %>' CssClass="btn btn-primary btn-sm" CausesValidation="False" />
+                                                                        <asp:Button runat="server" ID="btnGenerarFixture" Text="Generar Fixture" CommandName="GenerarFixture" CommandArgument='<%# Eval("idCampeonato") %>' CssClass="btn btn-primary btn-sm" CausesValidation="False" Width="130px" />
+                                                                <asp:Button runat="server" ID="btnVerFixture" Text="Ver Fixture" CommandName="VerFixture" CommandArgument='<%# Eval("idCampeonato") %>' CssClass="btn btn-primary btn-sm" CausesValidation="False" Width="130px"/>
+                                                                <asp:Button runat="server" ID="btnCargarResultados" Text="Cargar Resultados" CommandName="CargarResultados" CommandArgument='<%# Eval("idCampeonato") %>' Width="130px" CssClass="btn btn-primary btn-sm" CausesValidation="False" />
                                                             </div>
                                                         </div>
                                                     </div>

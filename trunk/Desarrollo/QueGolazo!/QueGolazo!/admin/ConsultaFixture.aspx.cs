@@ -15,10 +15,9 @@ namespace QueGolazo_.admin
         protected void Page_Load(object sender, EventArgs e)
         {
             if (!Page.IsPostBack)
-            {//Se carga el repeater de Fechas
-                DAOFixture gestorFixture = new DAOFixture();
-                //GestorFixture gestorFixture = new GestorFixture();
-                List<Fecha> Fechas = gestorFixture.obtenerFixtureDeUnCampeonato(Int32.Parse(Session["idCampeonato"].ToString()));
+            {
+                DAOFixture gestorFixture = new DAOFixture();//Se crea el gestor de fixture      
+                List<Fecha> fechas = gestorFixture.obtenerFixtureDeUnCampeonato(Int32.Parse(Session["idCampeonato"].ToString()));
                 Session["Fechas"] = gestorFixture.obtenerFixtureDeUnCampeonato(Int32.Parse(Session["idCampeonato"].ToString()));
                 repiter_fechas.DataSource = (List<Fecha>)Session["Fechas"];
                 repiter_fechas.DataBind();
@@ -26,7 +25,10 @@ namespace QueGolazo_.admin
             }
         }
 
-        //Se carga el combo de fechas
+        /// <summary>
+        /// Carga los DropdownList De Fechas.
+        /// autor: Flor
+        /// </summary>
         private void cargarListaDeFechas(int cantidadDeFechas)
         {
             for (int i = 0; i < cantidadDeFechas; i++)
@@ -39,7 +41,10 @@ namespace QueGolazo_.admin
 
         }
 
-        //se cargan los partidos de las fechas 
+        /// <summary>
+        /// Carga los partidos de cada Fecha.
+        /// autor: Flor
+        /// </summary>
         protected void repiter_fechas_ItemDataBound(object sender, RepeaterItemEventArgs e)
         {
             if (e.Item.ItemType == ListItemType.Item || e.Item.ItemType == ListItemType.AlternatingItem)
@@ -52,9 +57,23 @@ namespace QueGolazo_.admin
             }
         }
 
+        /// <summary>
+        /// Evento de cambio en la fecha selecccionada en el ddl.
+        /// autor: Flor
+        /// </summary>
         protected void ddlFechas_SelectedIndexChanged(object sender, EventArgs e)
         {
             Response.Redirect(HttpContext.Current.Request.Url.AbsoluteUri + "#Fecha" + ddlFechas.SelectedValue.ToString());
+        }
+
+        /// <summary>
+        /// Metodo para volver a la pantalla Campeonatos
+        /// autor: Flor
+        /// </summary>
+        protected void btnVolver_Click(object sender, EventArgs e)
+        {
+            Session["Fechas"] = null;
+            Response.Redirect("Campeonatos.aspx");
         }
     }
 }

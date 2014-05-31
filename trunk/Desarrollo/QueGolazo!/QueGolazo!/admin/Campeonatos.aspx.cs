@@ -15,6 +15,7 @@ namespace QueGolazo_
     {
         /// <summary>
         /// Se carga la página
+        /// autor: Flor
         /// </summary>
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -29,6 +30,7 @@ namespace QueGolazo_
 
         /// <summary>
         /// Método para llamar al método generar fixture
+        /// autor: Flor
         /// </summary>
         protected void repiter_campeonatos_ItemCommand(object source, RepeaterCommandEventArgs e)
         {
@@ -76,6 +78,7 @@ namespace QueGolazo_
 
         /// <summary>
         /// Deshabilita el botón generar fixture en campeonatos ya diagramados
+        /// autor: Flor
         /// </summary>
         protected void repiter_campeonatos_ItemDataBound(object sender, RepeaterItemEventArgs e)
         {
@@ -100,8 +103,6 @@ namespace QueGolazo_
                     btnVerFixture.Visible = false;
                     btnCargarResultados.Visible = false;
                 }
-
-
 
             }
         }
