@@ -44,6 +44,7 @@
     <Compile Include="DAOEquipos.cs" />
     <Compile Include="DAOEstado.cs" />
     <Compile Include="DAOFixture.cs" />
+    <Compile Include="DAOPartido.cs" />
     <Compile Include="DAOSuperficies.cs" />
     <Compile Include="DAOTamañosDeCancha.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
