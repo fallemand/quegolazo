@@ -16,6 +16,7 @@ namespace Entidades
         public int idSuperficieDeCancha { get; set; }
         public int idEstado { get; set; }
         public int idTipoFixture { get; set; }
+        public string sistemaPuntuacion { get; set; }
         /// <summary>
         /// La cantidad maxima de jugadores que permite el campeonato para cada equipo
         /// </summary>
