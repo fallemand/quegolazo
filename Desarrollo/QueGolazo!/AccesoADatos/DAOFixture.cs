@@ -111,6 +111,10 @@ namespace AccesoADatos
                     {
                         cmd.Parameters.AddWithValue("@idEquipoVisitante", DBNull.Value);
                     }
+                    else
+                    {
+                        cmd.Parameters.AddWithValue("@idEquipoVisitante", partidoDeUnaFecha.equipoVisitante.idEquipo);
+                    }
                     cmd.Parameters.AddWithValue("@idEquipoVisitante", partidoDeUnaFecha.equipoVisitante.idEquipo);
                     cmd.CommandText = sql;
                     cmd.ExecuteNonQuery();
@@ -135,34 +139,20 @@ namespace AccesoADatos
         {
             SqlConnection con = new SqlConnection(cadenaDeConexion);
             SqlCommand cmd = new SqlCommand();
-            List<Equipo> respuesta = new List<Equipo>();
             try
-            {
-                OperacionesAccesoADatos.conectar(con, cmd);
-                string sql = @"SELECT idEquipo,idCampeonato, nombre, urlLogo, colorDeCamisetaPrimario, colorDeCamisetaSecundario, directorTecnico
-                                FROM Equipos
-                                WHERE idCampeonato = @idCampeonato";
-                cmd.Parameters.Clear();
-                cmd.Parameters.AddWithValue("@idCampeonato", idCampeonato);
-                cmd.CommandText = sql;
-
-                SqlDataReader dr = cmd.ExecuteReader();
-
-                while (dr.Read())
+            {                
+                List<Fecha> respuesta = new List<Fecha>();
+                int cantidadDeFechas = obtenerCantidadDeFechasDeUnCampeonato(idCampeonato);
+                for (int i = 0; i < cantidadDeFechas; i++)
                 {
-                    Equipo equipoParaAgregar = new Equipo()
+                    Fecha nuevaFecha = new Fecha()
                     {
-                        idCampeonato = int.Parse(dr["idCampeonato"].ToString()),
-                        nombre = dr["nombre"].ToString(),
-                        idEquipo = int.Parse(dr["idEquipo"].ToString()),
-                        urlLogo = dr["urlLogo"].ToString(),
-                        colorDeCamisetaPrimario = dr["colorDeCamisetaPrimario"].ToString(),
-                        colorDeCamisetaSecundario = dr["colorDeCamisetaSecundario"].ToString(),
-                        directorTecnico = dr["directorTecnico"].ToString(),
+                        numeroDeFecha = i + 1,
+                        partidos = obtenerPartidosDeUnaFecha(idCampeonato, i + 1)
                     };
-                    respuesta.Add(equipoParaAgregar);
+                        respuesta.Add(nuevaFecha);
                 }
-                return new List<Fecha>();
+                return respuesta;
             }
             catch (Exception ex)
             {
@@ -172,6 +162,85 @@ namespace AccesoADatos
             {
                 con.Close();
             }
+        }
+
+        /// <summary>
+        /// Obtiene todos los partidos de una fecha determinada.
+        /// </summary>
+        /// <param name="idCampeonato">EL id del campeonato</param>
+        /// <param name="numeroDeFecha">El id de la fecha</param>
+        /// <returns>Una lista generica de objetos Partido</returns>
+        public List<Partido> obtenerPartidosDeUnaFecha(int idCampeonato, int numeroDeFecha)
+        {
+            SqlConnection con = new SqlConnection(cadenaDeConexion);
+            SqlCommand cmd = new SqlCommand();
+            List<Partido> respuesta = new List<Partido>();
+            try
+            {
+                OperacionesAccesoADatos.conectar(con, cmd);
+                string sql = @"SELECT idPartido, idFecha, idCampeonato, idEquipoLocal, idEquipoVisitante, golesLocal, golesVisitante, idEstado
+                               FROM Partidos 
+                               WHERE idCampeonato =@idCampeonato and idFecha = @numeroDeFecha";
+                cmd.Parameters.Clear();
+                cmd.Parameters.AddWithValue("@idCampeonato", idCampeonato);
+                cmd.Parameters.AddWithValue("@numeroDeFecha", numeroDeFecha);
+                cmd.CommandText = sql;
+                SqlDataReader dr = cmd.ExecuteReader();
+                DAOEquipos daoEquipo = new DAOEquipos();
+                while (dr.Read())
+                {
+                    DAOEstado daoEstado = new DAOEstado();
+                    Equipo local, visita;
+                    local = obtenerEquipoDelDataReader(dr["idEquipoLocal"]);
+                    visita = obtenerEquipoDelDataReader(dr["idEquipoVisitante"]);
+                    Estado state = daoEstado.obtenerUnEstadoPorId(int.Parse(dr["idEstado"].ToString()));
+                    int golLocal = 0; 
+                    int golVisitante = 0; 
+                    if (state.nombre != Estado.enumNombre.NO_JUGADO) {//si el partido se jugó tendrá valores en estos campos
+                        golLocal = int.Parse(dr["golesLocal"].ToString());
+                        golVisitante = int.Parse(dr["golesLocal"].ToString());
+                    }
+                    Partido partidoParaAgregar = new Partido()
+                    {
+                        idCampeonato = int.Parse(dr["idCampeonato"].ToString()),
+                        equipoLocal = local,
+                        equipoVisitante = visita,
+                        idFecha = int.Parse(dr["idFecha"].ToString()),
+                        golesVisitante = golVisitante,
+                        golesLocal = golLocal,
+                        estado = state
+                    };
+                    respuesta.Add(partidoParaAgregar);
+                }
+                return respuesta;
+                }
+            catch (Exception ex)
+            {
+                throw new Exception("Error al intentar recuperar un estado: " + ex.Message);
+            }
+            finally
+            {
+                con.Close();
+            }
+        }
+
+        /// <summary>
+        /// obtiene un equipo en base al registro leido en el datareader
+        /// </summary>
+        /// <param name="registroDelDataReader">una columnda con un valor obtenida del datareader</param>
+        /// <returns>Un objeto Equipo</returns>
+        private Equipo obtenerEquipoDelDataReader(object registroDelDataReader){
+            Equipo respuesta = null;
+            DAOEquipos daoEquipo = new DAOEquipos();
+            if (registroDelDataReader != DBNull.Value)
+            //si tiene un numero
+            {
+               respuesta = daoEquipo.obtenerUnEquipo(int.Parse(registroDelDataReader.ToString()));
+            }
+            else 
+                respuesta = daoEquipo.obtenerUnEquipo(null);
+
+            return respuesta;
         }
 
         /// <summary>
@@ -249,6 +318,41 @@ namespace AccesoADatos
             }
         }
 
+
+        /// <summary>
+        /// Obtiene la cantidad de fechas que se generaron para un campeonato determinado
+        /// </summary>
+        /// <param name="idCampeonato">El id del campeonato.</param>
+        /// <returns>El número de fechas que se generaron para ese campeonato</returns>
+        public int obtenerCantidadDeFechasDeUnCampeonato(int idCampeonato)
+        {
+            SqlConnection con = new SqlConnection(cadenaDeConexion);
+            SqlCommand cmd = new SqlCommand();
+            try
+            {
+                OperacionesAccesoADatos.conectar(con, cmd);
+                //Obtengo la cantidad de fechas que se diagramaron para este campeonato
+                string sql = @"SELECT max(idFecha)
+                               FROM Partidos
+                               WHERE idCampeonato = @idCampeonato";
+                cmd.Parameters.Clear();
+                cmd.Parameters.AddWithValue("@idCampeonato", idCampeonato);
+                cmd.CommandText = sql;
+                return (int)cmd.ExecuteScalar();
+            }
+            catch (InvalidCastException ex)
+            {//si la consulta no devuelve filas entonces el valor es cero
+                return 0;
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Error al intentar recuperar datos del campeonato: " + ex.Message);
+            }
+            finally
+            {
+                con.Close();
+            }
+        }
 
     }
 }

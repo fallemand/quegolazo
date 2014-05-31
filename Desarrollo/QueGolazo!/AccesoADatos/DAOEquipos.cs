@@ -116,5 +116,66 @@ namespace AccesoADatos
             }
         }
 
+        /// <summary>
+        /// Devuelve un equipo registrado en la base de datos, o null si no lo encuentra.
+        /// </summary>
+        /// <param name="idEquipo">El id del equipo donde juega el equipo a obtener.</param>
+        /// <returns>Un objeto Equipo</returns>
+        public Equipo obtenerUnEquipo(int? idEquipo)
+        {
+            SqlConnection con = new SqlConnection(cadenaDeConexion);
+            SqlCommand cmd = new SqlCommand();
+            if (idEquipo != null)
+            {
+                try
+                {
+                    OperacionesAccesoADatos.conectar(con, cmd);
+                    string sql = @"SELECT idEquipo,idCampeonato, nombre, urlLogo, colorDeCamisetaPrimario, colorDeCamisetaSecundario, directorTecnico
+                                FROM Equipos
+                                WHERE idEquipo = @idEquipo";
+                    cmd.Parameters.Clear();
+                    cmd.Parameters.AddWithValue("@idEquipo", idEquipo);
+                    cmd.CommandText = sql;
+
+                    SqlDataReader dr = cmd.ExecuteReader();
+                    Equipo respuesta = null;
+                    while (dr.Read())
+                    {
+                        string url = "", dirTecnico = "";
+                        //verificamos que los campos opcionales no tengan null en su valor
+                        if (dr["urlLogo"] != DBNull.Value)
+                            url = dr["urlLogo"].ToString();
+                        if (dr["directorTecnico"] != DBNull.Value)
+                            dirTecnico = dr["directorTecnico"].ToString();
+                        //creamos el nuevo equipo 
+                        Equipo equipo = new Equipo()
+                        {
+                            idCampeonato = int.Parse(dr["idCampeonato"].ToString()),
+                            nombre = dr["nombre"].ToString(),
+                            idEquipo = int.Parse(dr["idEquipo"].ToString()),
+                            urlLogo = url,
+                            colorDeCamisetaPrimario = dr["colorDeCamisetaPrimario"].ToString(),
+                            colorDeCamisetaSecundario = dr["colorDeCamisetaSecundario"].ToString(),
+                            directorTecnico = dirTecnico,
+                        };
+                        respuesta = equipo;
+                    }
+                    return respuesta;
+                }
+                catch (Exception ex)
+                {
+                    throw new Exception("Error al intentar recuperar los equipos del campeonato: " + ex.Message);
+                }
+                finally
+                {
+                    con.Close();
+                }
+            }
+            else { //si el id del equipo es null, le toca fecha libre
+                return new Equipo() {nombre = "LIBRE" };
+            }
+           
+        }
+
     }
 }
