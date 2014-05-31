@@ -20,6 +20,7 @@ namespace QueGolazo_
         {
             if (!Page.IsPostBack)//true: primera vez que se carga la página
             {
+               
                 DAOCampeonato gestor = new DAOCampeonato();
                 repiter_campeonatos.DataSource = gestor.obtenerTodos();
                 repiter_campeonatos.DataBind();
@@ -32,6 +33,7 @@ namespace QueGolazo_
         /// </summary>
         protected void repiter_campeonatos_ItemCommand(object source, RepeaterCommandEventArgs e)
         {
+           
             DAOCampeonato gestor = new DAOCampeonato();
             if (e.CommandName == "GenerarFixture" && e.CommandArgument != "")
             {
@@ -45,8 +47,7 @@ namespace QueGolazo_
                 }
                 else
                 {
-                    //c.fixture  = GestorCampeonatos.generarFixtureTodosContraTodos(c.equipos, c.idTipoFixture);
-                    //TextBox txtCantidad = (TextBox)e.Item.FindControl("txtCantidad");
+                   
                     Session["campeonato"] = c;
                     GestorFixture gestorFixture = new GestorFixture();
                     List<Fecha> fechas = gestorFixture.generarFixtureTodosContraTodos(c.equipos, c.idTipoFixture);
@@ -55,7 +56,16 @@ namespace QueGolazo_
                 }
 
             }
+            if (e.CommandName == "VerFixture" && e.CommandArgument != "")
+            {
+                Session["idCampeonato"] = Convert.ToInt32(e.CommandArgument);
+                GestorFixture gestorFixture = new GestorFixture();
+                Response.Redirect("ConsultaFixture.aspx");
+            }
+
         }
+
+
 
         /// <summary>
         /// Deshabilita el botón generar fixture en campeonatos ya diagramados
@@ -66,12 +76,21 @@ namespace QueGolazo_
             {
 
                 Button btnGenerarFixture = (Button)e.Item.FindControl("btnGenerarFixture");
+                Button btnVerFixture = (Button)e.Item.FindControl("btnVerFixture");
 
                 if (((Campeonato)e.Item.DataItem).idEstado == 2)//2=Diagramado
                 {
-                    btnGenerarFixture.Enabled = false;
+                    btnGenerarFixture.Visible = false;
+                    btnVerFixture.Visible = true;
                 }
-               
+                else
+                
+                {
+                    btnGenerarFixture.Visible = true;
+                    btnVerFixture.Visible = false;
+                }
+
+
 
             }
         }

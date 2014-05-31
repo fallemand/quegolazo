@@ -220,6 +220,11 @@ namespace AccesoADatos
                 respuesta.golesLocal = int.Parse(dr["golesLocal"].ToString());
                 respuesta.golesVisitante = int.Parse(dr["golesLocal"].ToString());
             }
+            else
+            {
+                respuesta.golesLocal = null;
+                respuesta.golesVisitante = null;
+            }
             respuesta.idCampeonato = int.Parse(dr["idCampeonato"].ToString());
             respuesta.idFecha = int.Parse(dr["idFecha"].ToString());
 

@@ -40,10 +40,15 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="GestorCampeonato.cs" />
     <Compile Include="GestorFixture.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\AccesoADatos\AccesoADatos.csproj">
+      <Project>{5eae8579-d4ec-448d-838f-93bbc5cf664e}</Project>
+      <Name>AccesoADatos</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Entidades\Entidades.csproj">
       <Project>{7bdd4a16-ac0f-4d8c-acae-48d2e2f37ec2}</Project>
       <Name>Entidades</Name>

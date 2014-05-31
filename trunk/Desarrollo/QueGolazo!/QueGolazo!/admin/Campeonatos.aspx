@@ -70,6 +70,7 @@
                                                                     </div>
                                                            <div class="col-md-3">
                                                                         <asp:Button runat="server" ID="btnGenerarFixture" Text="Generar Fixture" CommandName="GenerarFixture" CommandArgument='<%# Eval("idCampeonato") %>' CssClass="btn btn-primary btn-sm" CausesValidation="False" />
+                                                                <asp:Button runat="server" ID="btnVerFixture" Text="Ver Fixture" CommandName="VerFixture" CommandArgument='<%# Eval("idCampeonato") %>' CssClass="btn btn-primary btn-sm" CausesValidation="False" />
                                                             </div>
                                                         </div>
                                                     </div>

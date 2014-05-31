@@ -15,7 +15,14 @@ namespace Entidades
         public Equipo equipoLocal { get; set; }
         public Equipo equipoVisitante { get; set; }
         public Estado estado { get; set; }
-        public int golesLocal { get; set; }
-        public int golesVisitante { get; set; }
+        public int? golesLocal { get; set; }
+        public int? golesVisitante { get; set; }
+
+
+        public Partido()
+        {
+            golesLocal = null;
+            golesVisitante = null;
+        }
     }
 }

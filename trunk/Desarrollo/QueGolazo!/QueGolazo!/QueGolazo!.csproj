@@ -57,17 +57,26 @@
     <Reference Include="System.EnterpriseServices" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="admin\ConsultaFixture.aspx" />
     <Content Include="admin\images\secciones\campeonato.png" />
     <Content Include="admin\RegistrarCampeonato.aspx" />
     <Content Include="admin\RegistrarEquipo.aspx" />
     <Content Include="admin\Campeonatos.aspx" />
     <Content Include="admin\Fixture.aspx" />
+    <Content Include="admin\RegistrarResultados.aspx" />
     <Content Include="js\desarrollo\panels.js" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
     </Content>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="admin\ConsultaFixture.aspx.cs">
+      <DependentUpon>ConsultaFixture.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="admin\ConsultaFixture.aspx.designer.cs">
+      <DependentUpon>ConsultaFixture.aspx</DependentUpon>
+    </Compile>
     <Compile Include="admin\RegistrarCampeonato.aspx.cs">
       <DependentUpon>RegistrarCampeonato.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -95,6 +104,13 @@
     </Compile>
     <Compile Include="admin\Fixture.aspx.designer.cs">
       <DependentUpon>Fixture.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="admin\RegistrarResultados.aspx.cs">
+      <DependentUpon>RegistrarResultados.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="admin\RegistrarResultados.aspx.designer.cs">
+      <DependentUpon>RegistrarResultados.aspx</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
