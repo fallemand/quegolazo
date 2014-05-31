@@ -150,9 +150,7 @@ namespace AccesoADatos
                 cmd.Parameters.Clear();
                 cmd.Parameters.AddWithValue("@idCampeonato", idCampeonato);
                 cmd.CommandText = sql;
-
-                SqlDataReader dr = cmd.ExecuteReader();
-                
+                SqlDataReader dr = cmd.ExecuteReader();                
                 //inicializamos los gestores para obtener datos de la BD
                 DAOTamañosDeCancha gestorTamañosCancha = new DAOTamañosDeCancha();
                 DAOSuperficies gestorDeSuperficies = new DAOSuperficies();
@@ -160,7 +158,6 @@ namespace AccesoADatos
 
                 while (dr.Read())
                 {
-
                     respuesta = new Campeonato()
                     {
                         idCampeonato = int.Parse(dr["idCampeonato"].ToString()),
@@ -174,7 +171,6 @@ namespace AccesoADatos
                         cantidaMaximaJugadores = int.Parse(dr["cantidadMaximaJugadores"].ToString()),
                         equipos = obtenerEquiposDeUnCampeonato(idCampeonato),
                         tamañoCancha = gestorTamañosCancha.obtenerTamañoPorId(int.Parse(dr["idTamañoCancha"].ToString())),
-
                         superficieDeCancha = gestorDeSuperficies.buscarSuperficiePorId(int.Parse(dr["idSuperficieDeCancha"].ToString())),
                         tipoFixture = gestorFixtures.obtenerTipoFixturePorId(int.Parse(dr["idTipoFixture"].ToString())),
 
@@ -192,8 +188,7 @@ namespace AccesoADatos
                 con.Close();
             }
         }
-
-          
+                 
         /// <summary>
         /// Obtiene todos los registros de la base de datos y los materializa en objetos de tipo Campeonato
         /// </summary>

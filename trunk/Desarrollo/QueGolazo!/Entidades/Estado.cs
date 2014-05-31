@@ -9,7 +9,24 @@ namespace Entidades
    public class Estado
     {
         public int idEstado { get; set; }
-        public string nombre { get; set; }
-        public string ambito { get; set; }
+        public enumAmbito ambito { get; set; }
+        public enumNombre nombre { get; set; }
+
+        public enum enumNombre
+        {
+            REGISTRADO, 
+            DIAGRAMADO,
+            PROGRAMADA,
+            INCOMPLETA,
+            COMPLETA,
+            JUGADO,
+            NO_JUGADO
+        }
+        public enum enumAmbito
+        {
+            CAMPEONATO,
+            FECHA,
+            PARTIDO
+        }
     }
 }

@@ -42,6 +42,7 @@
   <ItemGroup>
     <Compile Include="DAOCampeonato.cs" />
     <Compile Include="DAOEquipos.cs" />
+    <Compile Include="DAOEstado.cs" />
     <Compile Include="DAOFixture.cs" />
     <Compile Include="DAOSuperficies.cs" />
     <Compile Include="DAOTamañosDeCancha.cs" />

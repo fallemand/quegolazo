@@ -14,6 +14,8 @@ namespace Entidades
         public int idCampeonato { get; set; }
         public Equipo equipoLocal { get; set; }
         public Equipo equipoVisitante { get; set; }
-       
+        public Estado estado { get; set; }
+        public int golesLocal { get; set; }
+        public int golesVisitante { get; set; }
     }
 }
