@@ -144,7 +144,7 @@ namespace AccesoADatos
             {
                 OperacionesAccesoADatos.conectar(con, cmd);
 
-                string sql = @"SELECT idCampeonato, nombre, urlLogo, idTamañoCancha, descripcion, idSuperficieDeCancha,cantidadMaximaJugadores , idEstado, idTipoFixture
+                string sql = @"SELECT idCampeonato, nombre, urlLogo, idTamañoCancha, descripcion, idSuperficieDeCancha,cantidadMaximaJugadores , idEstado, idTipoFixture , sistemaPuntuacion
                                 FROM Campeonatos
                                 WHERE idCampeonato = @idCampeonato";
                 cmd.Parameters.Clear();
@@ -173,7 +173,7 @@ namespace AccesoADatos
                         tamañoCancha = gestorTamañosCancha.obtenerTamañoPorId(int.Parse(dr["idTamañoCancha"].ToString())),
                         superficieDeCancha = gestorDeSuperficies.buscarSuperficiePorId(int.Parse(dr["idSuperficieDeCancha"].ToString())),
                         tipoFixture = gestorFixtures.obtenerTipoFixturePorId(int.Parse(dr["idTipoFixture"].ToString())),
-
+                        sistemaPuntuacion = dr["sistemaPuntuacion"].ToString(),
                     };
                 }
                 return respuesta;
