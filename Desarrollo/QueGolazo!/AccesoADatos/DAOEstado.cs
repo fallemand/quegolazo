@@ -14,9 +14,10 @@ namespace AccesoADatos
     {
        private string cadenaDeConexion = System.Configuration.ConfigurationManager.ConnectionStrings[System.Environment.MachineName].ConnectionString;
 
-       /// <summary>
-       /// Obtiene todos los registros de la base de datos y los materializa en objetos de tipo Estado
-       /// </summary>
+      /// <summary>
+       /// Obtiene todos los registros de la tabla Estados
+      /// </summary>
+      /// <returns>Una lista generica de objetos Estado</returns>
        public List<Estado> obtenerTodos()
        {
            SqlConnection con = new SqlConnection(cadenaDeConexion);

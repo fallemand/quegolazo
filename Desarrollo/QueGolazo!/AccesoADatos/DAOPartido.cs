@@ -35,7 +35,7 @@ namespace AccesoADatos
                 cmd.Parameters.AddWithValue("@numeroDeFecha", numeroDeFecha);
                 cmd.CommandText = sql;
                 SqlDataReader dr = cmd.ExecuteReader();
-                DAOEquipos daoEquipo = new DAOEquipos();
+                DAOEquipo daoEquipo = new DAOEquipo();
                 while (dr.Read())
                 {
                     Partido partidoParaAgregar = extraerPartidoDelDataReader(dr);
@@ -57,6 +57,7 @@ namespace AccesoADatos
         /// Obtiene un objeto partido de una fila del datareader
         /// </summary>
         /// <param name="dr">El objeto DataReader que se esta usando para leer la BD</param>
+        /// <returns>Un objeto Partido</returns>
         private Partido extraerPartidoDelDataReader(SqlDataReader dr)
         {
             Partido respuesta = new Partido();
@@ -78,12 +79,12 @@ namespace AccesoADatos
         /// <summary>
         /// obtiene un equipo en base al registro leido en el datareader
         /// </summary>
-        /// <param name="registroDelDataReader">una columnda con un valor obtenida del datareader</param>
+        /// <param name="registroDelDataReader">una columna con un valor obtenida del datareader</param>
         /// <returns>Un objeto Equipo</returns>
         private Equipo obtenerEquipoDelDataReader(object registroDelDataReader)
         {
             Equipo respuesta = null;
-            DAOEquipos daoEquipo = new DAOEquipos();
+            DAOEquipo daoEquipo = new DAOEquipo();
             if (registroDelDataReader != DBNull.Value)
             //si tiene un numero
             {
@@ -153,11 +154,12 @@ namespace AccesoADatos
         {
             SqlConnection con = new SqlConnection(cadenaDeConexion);
             SqlCommand cmd = new SqlCommand();
+            OperacionesAccesoADatos.conectar(con, cmd);
             try
             {               
                     string sql = @"UPDATE Partidos 
-                                   SET	golesLocal = @golesLocal, golesVisitante = @golesVisitante, idEstado = @idEstado, idEquipoLocal = @idEquipoLocal, idEquipoVisitante =1, idFecha = 1
-                                   WHERE idPartido = 1 and idCampeonato =1";
+                                   SET golesLocal = @golesLocal, golesVisitante = @golesVisitante, idEstado = @idEstado, idEquipoLocal = @idEquipoLocal, idEquipoVisitante =@idEquipoVisitante
+                                   WHERE idPartido =@idPartido and idCampeonato =@idCampeonato and idFecha= @idFecha";
                     cmd.Parameters.Clear();
                     cmd.Parameters.AddWithValue("@idPartido", partido.idPartido);
                     cmd.Parameters.AddWithValue("@idFecha", partido.idFecha);
