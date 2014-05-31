@@ -6,12 +6,20 @@ using System.Data;
 using System.Data.SqlClient;
 using Entidades;
 using Utils;
+using AccesoADatos;
 
 namespace Logica
 {
     public class GestorFixture
     {
-        /// <summary>
+        public DAOFixture fixture {get; set;}
+
+       
+
+        /// <summary> public GestorFixture()
+        {
+            fixture = new DAOFixture();
+        }
         /// Genera un fixture para un campeonato, utilizando el algoritmo de TODOS contra TODOS 
         /// </summary>
         /// <param name="equiposParticipantes">La lista de equipos para generar el fixture.</param>

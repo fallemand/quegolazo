@@ -16,6 +16,7 @@ namespace Entidades
        public string colorDeCamisetaSecundario { get; set; }
        public string directorTecnico { get; set; }
 
+
        public Equipo()
        {
 
@@ -24,5 +25,7 @@ namespace Entidades
        {
            return (Equipo)this.MemberwiseClone();
        }
+
+      
     }
 }
