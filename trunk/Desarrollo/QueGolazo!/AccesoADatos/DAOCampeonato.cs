@@ -153,7 +153,7 @@ namespace AccesoADatos
                 SqlDataReader dr = cmd.ExecuteReader();                
                 //inicializamos los gestores para obtener datos de la BD
                 DAOTamañosDeCancha gestorTamañosCancha = new DAOTamañosDeCancha();
-                DAOSuperficies gestorDeSuperficies = new DAOSuperficies();
+                DAOSuperficie gestorDeSuperficies = new DAOSuperficie();
                 DAOFixture gestorFixtures = new DAOFixture();
 
                 while (dr.Read())

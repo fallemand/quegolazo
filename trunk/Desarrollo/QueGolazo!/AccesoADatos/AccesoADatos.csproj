@@ -41,11 +41,11 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="DAOCampeonato.cs" />
-    <Compile Include="DAOEquipos.cs" />
+    <Compile Include="DAOEquipo.cs" />
     <Compile Include="DAOEstado.cs" />
     <Compile Include="DAOFixture.cs" />
     <Compile Include="DAOPartido.cs" />
-    <Compile Include="DAOSuperficies.cs" />
+    <Compile Include="DAOSuperficie.cs" />
     <Compile Include="DAOTamañosDeCancha.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

@@ -9,14 +9,15 @@ using Utils;
 
 namespace AccesoADatos
 {
-   public class DAOEquipos
+   public class DAOEquipo
     {
-        private string cadenaDeConexion = System.Configuration.ConfigurationManager.ConnectionStrings[System.Environment.MachineName].ConnectionString;
-
-
+       private string cadenaDeConexion = System.Configuration.ConfigurationManager.ConnectionStrings[System.Environment.MachineName].ConnectionString;
+       
         /// <summary>
-        /// Inserta un objeto Equipo en la base de datos, junto con su Delegado.
-        /// </summary>
+        ///  Inserta un objeto Equipo en la base de datos, junto con su Delegado
+       /// </summary>
+       /// <param name="equipo">El equipo a registrar.</param>
+       /// <param name="delegado">El delegado a registrar</param>
         public void registrarEquipo(Equipo equipo, Delegado delegado)
         {
             SqlConnection con = new SqlConnection(cadenaDeConexion);
@@ -24,7 +25,7 @@ namespace AccesoADatos
             SqlTransaction trans = null;
             try
             {
-                conectar(con, cmd);
+                OperacionesAccesoADatos.conectar(con, cmd);
                 trans = con.BeginTransaction();
                 cmd.Transaction = trans;
 
@@ -65,22 +66,11 @@ namespace AccesoADatos
         }
 
         /// <summary>
-        /// Realiza la conexion a la base de datos, solo si esta se encuentra en estado "Closed", seteando ademas la conexion al objeto SqlCommand. 
+        ///  Verifica si existe un equipo con ese nombre en el mismo campeonato. 
         /// </summary>
-        private void conectar(SqlConnection con, SqlCommand cmd)
-        {
-            if (con.State == ConnectionState.Closed)
-            {
-                con.Open();
-                cmd.Connection = con;
-            }
-        }
-
-
-        /// <summary>
-        /// Verifica si existe un equipo con ese nombre en el mismo campeonato. 
-        /// Retorna true si existe, y false si no existe.
-        /// </summary>
+        /// <param name="nombreEquipo">El nombre de equipo que se quiere verificar.</param>
+        /// <param name="idCampeonato">El id del campeonato en el cual se validara el nombre del equipo.</param>
+        /// <returns>true si existe, y false si no existe.</returns>
         public bool validarSiExisteEnCampeonato(string nombreEquipo, int idCampeonato)
         {
             SqlConnection con = new SqlConnection(cadenaDeConexion);
@@ -88,7 +78,7 @@ namespace AccesoADatos
             SqlDataReader dr;
             try
             {
-                conectar(con, cmd);
+               OperacionesAccesoADatos.conectar(con, cmd);
                 string sql = @"SELECT 1 
                                 FROM Equipos
                                 WHERE  nombre = @nombre and idCampeonato=@idCampeonato";

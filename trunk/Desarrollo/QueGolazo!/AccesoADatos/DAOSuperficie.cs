@@ -9,12 +9,10 @@ using Utils;
 
 namespace AccesoADatos
 {
-    public class DAOSuperficies
+    public class DAOSuperficie
     {
         string cadenaDeConexion = System.Configuration.ConfigurationManager.ConnectionStrings[System.Environment.MachineName].ConnectionString;
-
-
-
+        
         /// <summary>
         /// Obtiene un objeto Datatable con las superficies de cancha registrados en la tabla SuperficiesDeCancha.
         /// </summary>
@@ -27,7 +25,9 @@ namespace AccesoADatos
             try
             {
                 OperacionesAccesoADatos.conectar(con, cmd);
-                string sql = "select idSuperficieDeCancha, nombre from SuperficiesDeCancha order by nombre asc";
+                string sql = @"SELECT idSuperficieDeCancha, nombre 
+                               FROM SuperficiesDeCancha 
+                               ORDER BY nombre ASC";
                 cmd.Parameters.Clear();
                 cmd.CommandText = sql;
                 dr = cmd.ExecuteReader();
