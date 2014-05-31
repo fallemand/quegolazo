@@ -27,7 +27,7 @@ namespace QueGolazo_.admin
         private void cargarDropDownLists()
         {
             //inicializamos los gestores para obtener datos de la BD
-            DAOSuperficies gestorSuperficies = new DAOSuperficies();
+            DAOSuperficie gestorSuperficies = new DAOSuperficie();
             DAOTamañosDeCancha gestorTamañosCancha = new DAOTamañosDeCancha();
 
             GestorDropDownLists.cargarDropDownList(gestorSuperficies.obtenerTodos(), ddlSuperficieDeCancha, "idSuperficieDeCancha", "nombre");

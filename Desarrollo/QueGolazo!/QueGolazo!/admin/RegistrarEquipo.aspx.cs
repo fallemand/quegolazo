@@ -69,7 +69,7 @@ namespace QueGolazo_.admin
             try
             {
                 //inicializamos los gestores para obtener datos de la BD
-                DAOEquipos gestorEquipo = new DAOEquipos();
+                DAOEquipo gestorEquipo = new DAOEquipo();
                 ocultarPaneles();
                 if (txtColorDeCamisetaPrimario.Value == txtColorDeCamisetaSecundario.Value)
                 {
