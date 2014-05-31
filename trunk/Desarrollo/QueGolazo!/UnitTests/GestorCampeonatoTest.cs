@@ -16,8 +16,8 @@ namespace UnitTests
         public void verificarCantidadCorrectaDeFechas()
         {
             GestorFixture gestor = new GestorFixture();          
-            List<Fecha> fixture = gestor.generarFixtureTodosContraTodos(generarListaDeEquipos(16), 1);
-            Assert.AreEqual(15, fixture.Count);
+            List<Fecha> fixture = gestor.generarFixtureTodosContraTodos(generarListaDeEquipos(6), 2);
+            Assert.AreEqual(10, fixture.Count);
         }
 
         /// <summary>
@@ -33,12 +33,30 @@ namespace UnitTests
             foreach (Fecha item in fixture)
             {
                 Assert.AreEqual(cantidadPartidos, item.partidos.Count);   
-            }
-          
-         
+            }         
         }
 
-
+        /// <summary>
+        /// Verifica que cada para la segunda ronda de un campeonato, se hayan intercambiado los equipos local y visitante de cada partido.
+        /// </summary>
+        [TestMethod]
+        public void verificarCambioDeLocalias()
+        {
+            List<Equipo> equiposParaProbar = generarListaDeEquipos(10);
+            GestorFixture gestor = new GestorFixture();          
+            List<Fecha> fixture = gestor.generarFixtureTodosContraTodos(equiposParaProbar, 2);
+            Fecha[] primeraRonda = new Fecha[9];
+            Fecha[] segundaRonda = new Fecha[9];
+            fixture.CopyTo(0, primeraRonda, 0, 9);
+            fixture.CopyTo(9, segundaRonda, 0, 9);
+            for (int i = 0; i < 9; i++)
+            {
+                for (int j = 0; j < primeraRonda[i].partidos.Count; j++)
+                {
+                    Assert.AreNotEqual(primeraRonda[i].partidos[j].equipoLocal, segundaRonda[i].partidos[j].equipoLocal); 
+                }
+            }
+        }
 
         /// <summary>
         /// Genera una lista de n equipos para probar el metodo de generacion de fixtures.

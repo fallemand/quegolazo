@@ -40,7 +40,28 @@ namespace Logica
                 fechas.Add(fechaNueva);
                 intercambiarPosiciones(ref equiposParticipantes);
             }
+            if (cantidadRondas == 2) //si tiene 2 rondas (ida y vuelta)
+                reordenarLocalias(ref fechas);
             return fechas;
+        }
+
+        /// <summary>
+        /// Intercambia los equipos locales y visitantes para la segunda ronda de un campeonato
+        /// </summary>
+        /// <param name="fechas">Las fechas a reordenar</param>
+        private void reordenarLocalias(ref List<Fecha> fechas)
+        {
+            int mitad = fechas.Count / 2;
+            for (int i = mitad; i < fechas.Count; i++)
+            {
+                for (int j = 0; j < fechas[i].partidos.Count; j++)
+                {
+                   Equipo copia = (Equipo)fechas[i].partidos[j].equipoLocal.Clone();
+                   fechas[i].partidos[j].equipoLocal = (Equipo)fechas[i].partidos[j].equipoVisitante.Clone();
+                   fechas[i].partidos[j].equipoVisitante = copia;
+                }
+            }
+          
         }
 
         /// <summary>
@@ -59,7 +80,7 @@ namespace Logica
         }
 
         /// <summary>
-        /// Intercambia la posicion de los equipos, pasando el ultimo equipo al segundo lugar, y adelantando los demas desde el segundo lugar.
+        /// Intercambia la posicion de los equipos, pasando el ultimo equipo al segundo lugar, y adelantando los demas desde el segundo lugar (Round Robin).
         /// </summary>
         /// <param name="equipos">La lista de equipos para cambiar de posicion</param>
         private void intercambiarPosiciones(ref List<Equipo> equipos)

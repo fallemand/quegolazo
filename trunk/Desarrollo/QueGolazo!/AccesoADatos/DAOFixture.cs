@@ -189,27 +189,7 @@ namespace AccesoADatos
                 DAOEquipos daoEquipo = new DAOEquipos();
                 while (dr.Read())
                 {
-                    DAOEstado daoEstado = new DAOEstado();
-                    Equipo local, visita;
-                    local = obtenerEquipoDelDataReader(dr["idEquipoLocal"]);
-                    visita = obtenerEquipoDelDataReader(dr["idEquipoVisitante"]);
-                    Estado state = daoEstado.obtenerUnEstadoPorId(int.Parse(dr["idEstado"].ToString()));
-                    int golLocal = 0; 
-                    int golVisitante = 0; 
-                    if (state.nombre != Estado.enumNombre.NO_JUGADO) {//si el partido se jugó tendrá valores en estos campos
-                        golLocal = int.Parse(dr["golesLocal"].ToString());
-                        golVisitante = int.Parse(dr["golesLocal"].ToString());
-                    }
-                    Partido partidoParaAgregar = new Partido()
-                    {
-                        idCampeonato = int.Parse(dr["idCampeonato"].ToString()),
-                        equipoLocal = local,
-                        equipoVisitante = visita,
-                        idFecha = int.Parse(dr["idFecha"].ToString()),
-                        golesVisitante = golVisitante,
-                        golesLocal = golLocal,
-                        estado = state
-                    };
+                    Partido partidoParaAgregar = extraerPartidoDelDataReader(dr);                                    
                     respuesta.Add(partidoParaAgregar);
                 }
                 return respuesta;
@@ -222,6 +202,28 @@ namespace AccesoADatos
             {
                 con.Close();
             }
+        }
+
+        /// <summary>
+        /// Obtiene un objeto partido de una fila del datareader
+        /// </summary>
+        /// <param name="dr">El objeto DataReader que se esta usando para leer la BD</param>
+        private Partido extraerPartidoDelDataReader(SqlDataReader dr)
+        {
+            Partido respuesta = new Partido();
+            DAOEstado daoEstado = new DAOEstado();
+            respuesta.estado = daoEstado.obtenerUnEstadoPorId(int.Parse(dr["idEstado"].ToString()));
+            respuesta.equipoLocal = obtenerEquipoDelDataReader(dr["idEquipoLocal"]);
+            respuesta.equipoVisitante = obtenerEquipoDelDataReader(dr["idEquipoVisitante"]);
+            if (respuesta.estado.nombre != Estado.enumNombre.NO_JUGADO)
+            {//si el partido se jugó tendrá valores en estos campos
+                respuesta.golesLocal = int.Parse(dr["golesLocal"].ToString());
+                respuesta.golesVisitante = int.Parse(dr["golesLocal"].ToString());
+            }
+            respuesta.idCampeonato = int.Parse(dr["idCampeonato"].ToString());
+            respuesta.idFecha = int.Parse(dr["idFecha"].ToString());
+
+            return respuesta;
         }
 
         /// <summary>
