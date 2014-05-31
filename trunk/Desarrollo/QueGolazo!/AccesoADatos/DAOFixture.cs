@@ -29,10 +29,11 @@ namespace AccesoADatos
                 OperacionesAccesoADatos.conectar(con, cmd);
                 trans = con.BeginTransaction();
                 cmd.Transaction = trans;
+                DAOPartido daoPartido = new DAOPartido();
                 foreach (Fecha fechaDeUnCampeoanto in campeonatoConFixtureConfirmado.fixture)
                 {
                     registrarFechaDeUnCampeonato(fechaDeUnCampeoanto, campeonatoConFixtureConfirmado.idCampeonato, ref con, ref cmd);
-                    registrarPartidosDeUnaFecha(fechaDeUnCampeoanto, campeonatoConFixtureConfirmado.idCampeonato, ref con, ref cmd);
+                    daoPartido.registrarPartidosDeUnaFecha(fechaDeUnCampeoanto, campeonatoConFixtureConfirmado.idCampeonato, ref con, ref cmd);
                 }
                 trans.Commit();
             }
@@ -46,7 +47,6 @@ namespace AccesoADatos
                 con.Close();
             }
         }
-
 
         /// <summary>
         ///  Graba en la base de datos una fecha correspondiente a un campeonato registrado
@@ -78,58 +78,7 @@ namespace AccesoADatos
             }
 
         }
-
-        /// <summary>
-        ///  Graba en la base de datos de los partidos correspondientes a una fecha de un campeonato registrado
-        /// </summary>
-        /// <param name="fechaDeUnCampeoanto">La fecha que contiene los partidos que se desea grabar</param>
-        /// <param name="idCampeonato">El id del campeonato al que pertenece la fecha</param>
-        /// <param name="con">El objeto SqlConnection que viene del metodo regitrarFixtureParaUnCampeonato</param>
-        /// <param name="cmd">El objeto SqlCommand que viene del metodo registrarFixtureParaUnCampeonato</param>
-        private void registrarPartidosDeUnaFecha(Fecha fechaDeUnCampeoanto, int idCampeonato, ref SqlConnection con, ref SqlCommand cmd)
-        {
-            try
-            {
-                int numeroDePartido = 1;
-                foreach (Partido partidoDeUnaFecha in fechaDeUnCampeoanto.partidos)
-                {
-                    string sql = @"INSERT INTO Partidos (idPartido, idFecha, idCampeonato, idEquipoLocal, idEquipoVisitante) 
-                                            VALUES (@idPartido,@idFecha,@idCampeonato,@idEquipoLocal, @idEquipoVisitante)";
-                    cmd.Parameters.Clear();
-                    cmd.Parameters.AddWithValue("@idPartido", numeroDePartido);
-                    cmd.Parameters.AddWithValue("@idFecha", fechaDeUnCampeoanto.numeroDeFecha);
-                    cmd.Parameters.AddWithValue("@idCampeonato", idCampeonato);
-                    if (partidoDeUnaFecha.equipoLocal.nombre == "LIBRE")
-                    {
-                        cmd.Parameters.AddWithValue("@idEquipoLocal", DBNull.Value);
-                    }
-                    else
-                    {
-                        cmd.Parameters.AddWithValue("@idEquipoLocal", partidoDeUnaFecha.equipoLocal.idEquipo);
-                    }
-                    if (partidoDeUnaFecha.equipoVisitante.nombre == "LIBRE")
-                    {
-                        cmd.Parameters.AddWithValue("@idEquipoVisitante", DBNull.Value);
-                    }
-                    else
-                    {
-                        cmd.Parameters.AddWithValue("@idEquipoVisitante", partidoDeUnaFecha.equipoVisitante.idEquipo);
-                    }
-                    cmd.Parameters.AddWithValue("@idEquipoVisitante", partidoDeUnaFecha.equipoVisitante.idEquipo);
-                    cmd.CommandText = sql;
-                    cmd.ExecuteNonQuery();
-                    numeroDePartido++;
-                }
-
-            }
-            catch (Exception ex)
-            {
-                throw new Exception("No se pudo registrar la fecha del campeonato: " + ex.Message);
-            }
-
-        }
-
-
+        
         /// <summary>
         /// Devuelve el fixture de un campeonato registrado y diagramado
         /// </summary>
@@ -143,12 +92,13 @@ namespace AccesoADatos
             {                
                 List<Fecha> respuesta = new List<Fecha>();
                 int cantidadDeFechas = obtenerCantidadDeFechasDeUnCampeonato(idCampeonato);
+                DAOPartido daoPartido = new DAOPartido();
                 for (int i = 0; i < cantidadDeFechas; i++)
                 {
                     Fecha nuevaFecha = new Fecha()
                     {
                         numeroDeFecha = i + 1,
-                        partidos = obtenerPartidosDeUnaFecha(idCampeonato, i + 1)
+                        partidos = daoPartido.obtenerPartidosDeUnaFecha(idCampeonato, i + 1)
                     };
                         respuesta.Add(nuevaFecha);
                 }
@@ -163,93 +113,7 @@ namespace AccesoADatos
                 con.Close();
             }
         }
-
-        /// <summary>
-        /// Obtiene todos los partidos de una fecha determinada.
-        /// </summary>
-        /// <param name="idCampeonato">EL id del campeonato</param>
-        /// <param name="numeroDeFecha">El id de la fecha</param>
-        /// <returns>Una lista generica de objetos Partido</returns>
-        public List<Partido> obtenerPartidosDeUnaFecha(int idCampeonato, int numeroDeFecha)
-        {
-            SqlConnection con = new SqlConnection(cadenaDeConexion);
-            SqlCommand cmd = new SqlCommand();
-            List<Partido> respuesta = new List<Partido>();
-            try
-            {
-                OperacionesAccesoADatos.conectar(con, cmd);
-                string sql = @"SELECT idPartido, idFecha, idCampeonato, idEquipoLocal, idEquipoVisitante, golesLocal, golesVisitante, idEstado
-                               FROM Partidos 
-                               WHERE idCampeonato =@idCampeonato and idFecha = @numeroDeFecha";
-                cmd.Parameters.Clear();
-                cmd.Parameters.AddWithValue("@idCampeonato", idCampeonato);
-                cmd.Parameters.AddWithValue("@numeroDeFecha", numeroDeFecha);
-                cmd.CommandText = sql;
-                SqlDataReader dr = cmd.ExecuteReader();
-                DAOEquipos daoEquipo = new DAOEquipos();
-                while (dr.Read())
-                {
-                    Partido partidoParaAgregar = extraerPartidoDelDataReader(dr);                                    
-                    respuesta.Add(partidoParaAgregar);
-                }
-                return respuesta;
-                }
-            catch (Exception ex)
-            {
-                throw new Exception("Error al intentar recuperar un estado: " + ex.Message);
-            }
-            finally
-            {
-                con.Close();
-            }
-        }
-
-        /// <summary>
-        /// Obtiene un objeto partido de una fila del datareader
-        /// </summary>
-        /// <param name="dr">El objeto DataReader que se esta usando para leer la BD</param>
-        private Partido extraerPartidoDelDataReader(SqlDataReader dr)
-        {
-            Partido respuesta = new Partido();
-            DAOEstado daoEstado = new DAOEstado();
-            respuesta.estado = daoEstado.obtenerUnEstadoPorId(int.Parse(dr["idEstado"].ToString()));
-            respuesta.equipoLocal = obtenerEquipoDelDataReader(dr["idEquipoLocal"]);
-            respuesta.equipoVisitante = obtenerEquipoDelDataReader(dr["idEquipoVisitante"]);
-            if (respuesta.estado.nombre != Estado.enumNombre.NO_JUGADO)
-            {//si el partido se jugó tendrá valores en estos campos
-                respuesta.golesLocal = int.Parse(dr["golesLocal"].ToString());
-                respuesta.golesVisitante = int.Parse(dr["golesLocal"].ToString());
-            }
-            else
-            {
-                respuesta.golesLocal = null;
-                respuesta.golesVisitante = null;
-            }
-            respuesta.idCampeonato = int.Parse(dr["idCampeonato"].ToString());
-            respuesta.idFecha = int.Parse(dr["idFecha"].ToString());
-
-            return respuesta;
-        }
-
-        /// <summary>
-        /// obtiene un equipo en base al registro leido en el datareader
-        /// </summary>
-        /// <param name="registroDelDataReader">una columnda con un valor obtenida del datareader</param>
-        /// <returns>Un objeto Equipo</returns>
-        private Equipo obtenerEquipoDelDataReader(object registroDelDataReader){
-            Equipo respuesta = null;
-            DAOEquipos daoEquipo = new DAOEquipos();
-            if (registroDelDataReader != DBNull.Value)
-            //si tiene un numero
-            {
-               respuesta = daoEquipo.obtenerUnEquipo(int.Parse(registroDelDataReader.ToString()));
-            }
-            else 
-                respuesta = daoEquipo.obtenerUnEquipo(null);
-
-            return respuesta;
-        }
-
+               
         /// <summary>
         /// Obtiene un objeto Datatable con los tipos de fixture registrados en la tabla TiposFixture
         /// </summary>
@@ -324,7 +188,6 @@ namespace AccesoADatos
                 con.Close();
             }
         }
-
 
         /// <summary>
         /// Obtiene la cantidad de fechas que se generaron para un campeonato determinado

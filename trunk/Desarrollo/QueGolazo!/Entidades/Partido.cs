@@ -7,8 +7,7 @@ using System.Threading.Tasks;
 namespace Entidades
 {
     public class Partido
-    {
-       
+    {       
         public int idPartido { get; set; }
         public int idFecha { get; set; }
         public int idCampeonato { get; set; }

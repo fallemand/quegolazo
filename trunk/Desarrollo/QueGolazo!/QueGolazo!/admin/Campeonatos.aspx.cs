@@ -27,7 +27,6 @@ namespace QueGolazo_
             }
         }
 
-
         /// <summary>
         /// Método para llamar al método generar fixture
         /// </summary>
