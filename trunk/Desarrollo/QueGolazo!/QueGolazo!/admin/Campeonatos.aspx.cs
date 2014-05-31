@@ -34,9 +34,12 @@ namespace QueGolazo_
         {
            
             DAOCampeonato gestor = new DAOCampeonato();
+            Campeonato c = gestor.buscarCampeonatoPorId(Convert.ToInt32(e.CommandArgument));
+            Session["campeonato"] = c;
             if (e.CommandName == "GenerarFixture" && e.CommandArgument != "")
             {
-                Campeonato c = gestor.buscarCampeonatoPorId(Convert.ToInt32(e.CommandArgument));
+                
+
                 if (c.equipos.Count() < 3)
                 {
                     string script = @"<script type='text/javascript'> alert('No se puede generar fixture ya que el campeonato tiene menos de 3 equipos registrados');</script>";
@@ -47,7 +50,7 @@ namespace QueGolazo_
                 else
                 {
                    
-                    Session["campeonato"] = c;
+                    
                     GestorFixture gestorFixture = new GestorFixture();
                     List<Fecha> fechas = gestorFixture.generarFixtureTodosContraTodos(c.equipos, c.idTipoFixture);
                     Session["fechas"] = fechas;
@@ -58,8 +61,13 @@ namespace QueGolazo_
             if (e.CommandName == "VerFixture" && e.CommandArgument != "")
             {
                 Session["idCampeonato"] = Convert.ToInt32(e.CommandArgument);
-                GestorFixture gestorFixture = new GestorFixture();
+                
                 Response.Redirect("ConsultaFixture.aspx");
+            }
+            if (e.CommandName == "CargarResultados" && e.CommandArgument != "")
+            {
+                
+                Response.Redirect("RegistrarResultados.aspx");
             }
 
         }
@@ -76,17 +84,21 @@ namespace QueGolazo_
 
                 Button btnGenerarFixture = (Button)e.Item.FindControl("btnGenerarFixture");
                 Button btnVerFixture = (Button)e.Item.FindControl("btnVerFixture");
+                Button btnCargarResultados = (Button)e.Item.FindControl("btnCargarResultados");
 
                 if (((Campeonato)e.Item.DataItem).idEstado == 2)//2=Diagramado
                 {
                     btnGenerarFixture.Visible = false;
                     btnVerFixture.Visible = true;
+                    btnCargarResultados.Visible = true;
+                    
                 }
                 else
                 
                 {
                     btnGenerarFixture.Visible = true;
                     btnVerFixture.Visible = false;
+                    btnCargarResultados.Visible = false;
                 }
 
 

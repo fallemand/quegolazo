@@ -28,6 +28,9 @@ height: 60px; /* Alto del botón */
 display: block;
 background: url(http://lh5.googleusercontent.com/-luDGEoQ_WZE/T1Ak-gta5MI/AAAAAAAACPI/ojfEGiaNmGw/s60/flecha-arriba.png) no-repeat center center;
 }
+    .auto-style2 {
+        width: 118px;
+    }
 </style> 
 
     <script type="text/javascript">
@@ -101,62 +104,48 @@ background: url(http://lh5.googleusercontent.com/-luDGEoQ_WZE/T1Ak-gta5MI/AAAAAA
                             </div>
                         </div>
                         <div class="panel-body">
-                           <%-- <asp:Button ID="btnAceptar" CssClass="btn btn-primary btn-lg" runat="server" Text="Aceptar" OnClientClick="return confirm('¿Estas seguro que deseas guardar esto :p?');ocultarPaneles();focus();" OnClick="btnAceptar_Click" />
-                           
-                            <asp:Button ID="btnCancelar" CssClass="btn btn-primary btn-lg" runat="server" Text="Cancelar" OnClientClick="ocultarPaneles();focus()" OnClick="btnCancelar_Click" />--%>
-                             <br/>
-                             <%-- <h3>Ir a la fecha: <asp:DropDownList ID="ddlFechas" runat="server" OnSelectedIndexChanged="ddlFechas_SelectedIndexChanged" AutoPostBack="True" AppendDataBoundItems="True"></asp:DropDownList></h3> --%>
-                            <h3>
-                                <select id="Select1">
-                                    <option>Fecha 1</option>
-                                    <option>Fecha 2</option>
-                                    <option>Fecha 3</option>
-                                    <option>Fecha 4</option>
 
-                                </select></h3>    
-                             <div class="row">
+                                <asp:DropDownList ID="ddlFechas" runat="server" CssClass="form-control" OnSelectedIndexChanged="ddlFechas_SelectedIndexChanged" AutoPostBack="True"></asp:DropDownList>
                                 
-                                        <%--<asp:Repeater ID="repiter_fechas" runat="server" OnItemDataBound="repiter_fechas_ItemDataBound">
-                                            <ItemTemplate>--%>
+
+                              <div class="row">
+
                                                 <div class="col-md-12">
-                                               <div class="well well-sm">
-                                                       <%-- <div class="row" id='Fecha<%# Eval("numeroDeFecha") %>'>--%>
-                                                        <%--  <div class="col-md-3"> 
-                                                             <%-- <strong>Fecha <%# Eval("numeroDeFecha") %> </strong><br />--%>
-                                                             
-                                                            <%--  </div>--%>
-                                                            <div class="col-md-7">
-
-                                                                <table class="well well-sm"> 
-                                                                            <tr>
-                                                                               <td>Equipo A </td>
-                                                                                <td>
-                                                                                    <asp:TextBox ID="TextBox1" runat="server" Width="32px"></asp:TextBox></td><td>--</td><td>
-                                                                                        <asp:TextBox ID="TextBox2" runat="server" Width="32px"></asp:TextBox></td>
-                                                                                <td>Equipo B</td>
-
-                                                                            </tr>
-                                                               <%-- <asp:Repeater ID="repiter_partidos" runat="server">
+                                                    <div class="well well-sm">
+                                                         <div class="row" >
+                                                             <div class="col-md-3">
+                                                                 </div>
+                                                            <div class="col-md-9">
+                                           
+                                                                <table>
+                                        
+                                                                <asp:Repeater ID="repiter_partidos" runat="server" >
                                                                  <ItemTemplate>
                                                                        <tr>
                                                                   
                                                                                 <td><%# Eval("equipoLocal.nombre") %></td>
-                                                                           <td>-----</td>
-                                                                                <td><%# Eval("equipoVisitante.nombre") %></td>
+                                                                           <td><asp:TextBox ID="txtGolesLocal" Text="" runat="server" Width="30px"></asp:TextBox> </td> <td>&nbsp&nbsp</td>
+                                                  
+                                                                                <td>--</td>
+                                                                            <td><asp:TextBox ID="TextBox2" runat="server" Text=""  Width="30px"></asp:TextBox> </td> <td>&nbsp&nbsp</td>
+                                                                             <td><%# Eval("equipoVisitante.nombre")%></td>
                                                                             </tr>
                                                                       
         
                                                                      </ItemTemplate>
-                                                                    </asp:Repeater>--%>
+                                                                    </asp:Repeater>
                                                                       </table>
-                                                      </div>
+
                                                         </div>
-                                                    </div>
-                                                </div>
-                                              
-                             
-                        
-                         <%--<div class="panel-footer">
+                                                         </div>
+                                                    </div></div>
+
+                      <div class="col-md-3">
+                                <asp:Button ID="btnGuardar" CssClass="btn btn-primary btn-lg" runat="server" Text="Guardar" OnClientClick="return confirm('¿Estas seguro que deseas guardar los resultados?');ocultarPaneles();focus();" OnClick="btnGuardar_Click" />
+                         </div>
+                          </div>
+                        </div>
+                         <div class="panel-footer">
                             <div class="row">
                                 <div class="col-md-9">
                                      <asp:Panel ID="panelExito" runat="server" CssClass="well-sm alert-success" 
@@ -172,7 +161,7 @@ background: url(http://lh5.googleusercontent.com/-luDGEoQ_WZE/T1Ak-gta5MI/AAAAAA
                                 
                             </div>
                             <br />
-                        </div>--%>
+                        </div>
                 </div>
 
         </div></div>
