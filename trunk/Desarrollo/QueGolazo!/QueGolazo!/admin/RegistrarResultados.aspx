@@ -99,13 +99,13 @@ background: url(http://lh5.googleusercontent.com/-luDGEoQ_WZE/T1Ak-gta5MI/AAAAAA
                                     <img class="thumbnail" style="background-color: #255e13" src="images/secciones/campeonato.png" />
                                 </div>
                                 <div class="col-md-10 col-xs-9">
-                                    <h2>Fechas</h2>
+                                    <h2>Fechas - Cargar Resultados</h2>
                                 </div>
                             </div>
                         </div>
                         <div class="panel-body">
-
-                                <asp:DropDownList ID="ddlFechas" runat="server" CssClass="form-control" OnSelectedIndexChanged="ddlFechas_SelectedIndexChanged" AutoPostBack="True"></asp:DropDownList>
+                            <h3> Fecha: <asp:DropDownList ID="ddlFechas" runat="server" OnSelectedIndexChanged="ddlFechas_SelectedIndexChanged" AutoPostBack="True" Width="50px"></asp:DropDownList></h3>
+                                
                                 
 
                               <div class="row">
@@ -120,19 +120,20 @@ background: url(http://lh5.googleusercontent.com/-luDGEoQ_WZE/T1Ak-gta5MI/AAAAAA
                                                                 <table>
                                         
                                                                 <asp:Repeater ID="repiter_partidos" runat="server"  >
-                                                                 <ItemTemplate>
+                                                                 <ItemTemplate >
                                                                     
                                                                        <tr>
-                                                                          <%# Eval("idPartido") %>
+                                                                       
+                                                                           <asp:Label ID="idPartido" runat="server" Text=<%# Eval("idPartido") %> Visible="false"></asp:Label>
                                                                            <td><%# Eval("equipoLocal.nombre") %></td>
-                                                                           <td><asp:TextBox ID="txtGolesLocal" Text="" runat="server" Width="30px" ></asp:TextBox> </td> <td>&nbsp&nbsp</td>
-                                                  
+                                                                           <td><asp:TextBox ID="txtGolesLocal" Text=<%# Eval("golesLocal") %> runat="server" Width="30px" ></asp:TextBox> </td> <td>&nbsp&nbsp</td>
+                                                                           <asp:CompareValidator ID="CompareValidator1" runat="server" ErrorMessage="Debe completar ambos campos" ControlToValidate="txtGolesLocal" SetFocusOnError="True" Visible="False" Type="Integer" Operator="DataTypeCheck" ></asp:CompareValidator>
                                                                                 <td>--</td>
-                                                                            <td><asp:TextBox ID="txtGolesVisitante" runat="server"  Text=""  Width="30px"></asp:TextBox> </td> <td>&nbsp&nbsp</td>
+                                                                           <td><asp:TextBox ID="txtGolesVisitante" runat="server"  Text=<%# Eval("golesVisitante") %>  Width="30px"></asp:TextBox> </td> <td>&nbsp&nbsp</td>
                                                                              <td><%# Eval("equipoVisitante.nombre")%></td>
                                                                             </tr>
                                                                                          
-        
+         <%--<asp:CompareValidator ID="CompareValidator2" runat="server" ErrorMessage="Debe completar ambos campos" ControlToCompare="txtGolesLocal" ControlToValidate="txtGolesVisitante" SetFocusOnError="True" Visible="False" Type="Integer">--%>
                                                                      </ItemTemplate>
                                                                     </asp:Repeater>
                                                                       </table>

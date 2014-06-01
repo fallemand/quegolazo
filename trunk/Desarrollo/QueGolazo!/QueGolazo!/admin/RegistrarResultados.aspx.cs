@@ -58,32 +58,61 @@ namespace QueGolazo_.admin
         
         }
 
+        /// <summary>
+        /// Oculta los paneles que muestran los mensajes de exito o fracaso.
+        /// </summary>
+        private void ocultarPaneles()
+        {
+            panelExito.Visible = false;
+            panelFracaso.Visible = false;
+            litError.Text = "";
+            litExito.Text = "";
+        }
+
         protected void btnGuardar_Click(object sender, EventArgs e)
         {
-            foreach (RepeaterItem item in repiter_partidos.Items)
-	        {
-                try
+            try
+            {
+                foreach (RepeaterItem item in repiter_partidos.Items)
                 {
-                    
+
+
                     int idCampeonato = ((Campeonato)Session["campeonato"]).idCampeonato;
                     int idFecha = int.Parse(ddlFechas.SelectedValue);
-                    string valor = ((Label)item.FindControl("idPartido")).Text;
-                    int idPartido = (int)Session["idPartidoActual"];
+
+                    int idPartido = int.Parse(((Label)item.FindControl("idPartido")).Text);
                     Partido partidoParaActualizar = obtenerPartido(idPartido, idFecha, idCampeonato);
-                    partidoParaActualizar.golesLocal = int.Parse(((Label)item.FindControl("txtGolesLocal")).Text);
-                    partidoParaActualizar.golesVisitante = int.Parse(((Label)item.FindControl("txtGolesVisitante")).Text);
-                   DAOEstado daoestado = new DAOEstado();
-                   partidoParaActualizar.estado = daoestado.obtenerUnEstadoPorNombreYAmbito(Estado.enumAmbito.PARTIDO.ToString(), Estado.enumNombre.JUGADO.ToString());
-                   DAOPartido daoPartido = new DAOPartido();
-                   daoPartido.actualizarUnPartido(partidoParaActualizar);
+                 
+                    if (partidoParaActualizar.equipoLocal.nombre != "LIBRE" && partidoParaActualizar.equipoVisitante.nombre != "LIBRE")
+                    {
+                        if (((TextBox)item.FindControl("txtGolesLocal")).Text != "")
+                        {
+                            partidoParaActualizar.golesLocal = int.Parse(((TextBox)item.FindControl("txtGolesLocal")).Text);
+                        }
+                        if (((TextBox)item.FindControl("txtGolesVisitante")).Text != "")
+                        {
+                            partidoParaActualizar.golesVisitante = int.Parse(((TextBox)item.FindControl("txtGolesVisitante")).Text);
+                        }
+                        //DAOEstado daoestado = new DAOEstado();
+                        //Estado es=daoestado.obtenerUnEstadoPorNombreYAmbito(Estado.enumAmbito.PARTIDO.ToString(), Estado.enumNombre.JUGADO.ToString());
+                        Estado es = new Estado() { ambito = Estado.enumAmbito.PARTIDO, idEstado = 6, nombre = Estado.enumNombre.JUGADO };
+                        partidoParaActualizar.estado = es;
+                        DAOPartido daoPartido = new DAOPartido();
+                        daoPartido.actualizarUnPartido(partidoParaActualizar);
+                    }
+
                 }
-                catch (Exception)
+                litExito.Text = "Se registraron con éxito los resultados!";
+                panelExito.Visible = true;
+
+            }
+            
+                catch (Exception ex)
                 {
-                    
+                    litError.Text = ex.Message;
+                    panelFracaso.Visible = true;
                 }
 		
-           
-            }
            
         }
 
@@ -97,9 +126,11 @@ namespace QueGolazo_.admin
                 foreach (Partido partido in fecha.partidos)
                 {
                     if (partido.idPartido == idPartido && partido.idCampeonato == idCampeonato && partido.idFecha == idFecha)
+                    {
                         respuesta = partido;
                         encontro = true;
-                    break;
+                        break;
+                    }
                 }
                 if (encontro)
                     break;

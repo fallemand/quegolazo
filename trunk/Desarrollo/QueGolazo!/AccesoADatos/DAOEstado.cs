@@ -130,7 +130,7 @@ namespace AccesoADatos
                    };
                    respuesta = nuevoEstado;
                }
-
+               dr.Close();
                return respuesta;
            }
            catch (Exception ex)
