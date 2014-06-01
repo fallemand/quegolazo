@@ -97,6 +97,52 @@ namespace AccesoADatos
            }
        }
 
+       /// <summary>
+       /// Obtiene un estado de la base de datos
+       /// </summary>
+       /// <param name="nombre">El nombre del estado</param>
+       /// <param name="ambito">El ambito del estado</param>
+       /// <returns>Un objeto de tipo Estado</returns>
+       public Estado obtenerUnEstadoPorNombreYAmbito(string nombre, string ambito)
+       {
+           SqlConnection con = new SqlConnection(cadenaDeConexion);
+           SqlCommand cmd = new SqlCommand();
+           SqlDataReader dr;
+           try
+           {
+               OperacionesAccesoADatos.conectar(con, cmd);
+               string sql = @"SELECT idEstado, nombre, ambito 
+                             FROM Estados
+                             WHERE nombre = @nombre and ambito = @ambito";
+               cmd.Parameters.Clear();
+               cmd.Parameters.AddWithValue("@nombre", nombre);
+               cmd.Parameters.AddWithValue("@ambito", ambito);
+               cmd.CommandText = sql;
+               dr = cmd.ExecuteReader();
+               Estado respuesta = null;
+               while (dr.Read())
+               {
+                   Estado nuevoEstado = new Estado()
+                   {
+                       idEstado = Int32.Parse(dr["idEstado"].ToString()),
+                       ambito = obtenerAmbito(dr["ambito"].ToString()),
+                       nombre = obtenerNombre(dr["nombre"].ToString())
+                   };
+                   respuesta = nuevoEstado;
+               }
+
+               return respuesta;
+           }
+           catch (Exception ex)
+           {
+               throw new Exception("Ocurrió un problema al cargar los datos: " + ex.Message);
+           }
+           finally
+           {
+               con.Close();
+           }
+       }
+
         /// <summary>
         /// Devuelve el enumerado correspondiente al ambito del estado
         /// </summary>

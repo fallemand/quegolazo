@@ -72,7 +72,7 @@ namespace AccesoADatos
             }
             respuesta.idCampeonato = int.Parse(dr["idCampeonato"].ToString());
             respuesta.idFecha = int.Parse(dr["idFecha"].ToString());
-
+            respuesta.idPartido = int.Parse(dr["idPartido"].ToString());
             return respuesta;
         }
 
