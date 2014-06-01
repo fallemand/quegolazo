@@ -119,18 +119,19 @@ background: url(http://lh5.googleusercontent.com/-luDGEoQ_WZE/T1Ak-gta5MI/AAAAAA
                                            
                                                                 <table>
                                         
-                                                                <asp:Repeater ID="repiter_partidos" runat="server" >
+                                                                <asp:Repeater ID="repiter_partidos" runat="server"  >
                                                                  <ItemTemplate>
+                                                                    
                                                                        <tr>
-                                                                  
-                                                                                <td><%# Eval("equipoLocal.nombre") %></td>
-                                                                           <td><asp:TextBox ID="txtGolesLocal" Text="" runat="server" Width="30px"></asp:TextBox> </td> <td>&nbsp&nbsp</td>
+                                                                          <%# Eval("idPartido") %>
+                                                                           <td><%# Eval("equipoLocal.nombre") %></td>
+                                                                           <td><asp:TextBox ID="txtGolesLocal" Text="" runat="server" Width="30px" ></asp:TextBox> </td> <td>&nbsp&nbsp</td>
                                                   
                                                                                 <td>--</td>
-                                                                            <td><asp:TextBox ID="TextBox2" runat="server" Text=""  Width="30px"></asp:TextBox> </td> <td>&nbsp&nbsp</td>
+                                                                            <td><asp:TextBox ID="txtGolesVisitante" runat="server"  Text=""  Width="30px"></asp:TextBox> </td> <td>&nbsp&nbsp</td>
                                                                              <td><%# Eval("equipoVisitante.nombre")%></td>
                                                                             </tr>
-                                                                      
+                                                                                         
         
                                                                      </ItemTemplate>
                                                                     </asp:Repeater>
@@ -141,7 +142,7 @@ background: url(http://lh5.googleusercontent.com/-luDGEoQ_WZE/T1Ak-gta5MI/AAAAAA
                                                     </div></div>
 
                       <div class="col-md-3">
-                                <asp:Button ID="btnGuardar" CssClass="btn btn-primary btn-lg" runat="server" Text="Guardar" OnClientClick="return confirm('¿Estas seguro que deseas guardar los resultados?');ocultarPaneles();focus();" OnClick="btnGuardar_Click" />
+                                <asp:Button ID="btnGuardar" CssClass="btn btn-primary btn-lg" CommandArgument="" runat="server" Text="Guardar" OnClientClick="return confirm('¿Estas seguro que deseas guardar los resultados?');ocultarPaneles();focus();" OnClick="btnGuardar_Click" />
                          </div>
                           </div>
                         </div>
