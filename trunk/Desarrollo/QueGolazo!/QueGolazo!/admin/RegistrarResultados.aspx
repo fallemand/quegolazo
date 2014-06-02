@@ -117,34 +117,32 @@ background: url(http://lh5.googleusercontent.com/-luDGEoQ_WZE/T1Ak-gta5MI/AAAAAA
                                                                  </div>
                                                             <div class="col-md-9">
                                            
-                                                                <table>
-                                        
+                                                                <table>                                        
                                                                 <asp:Repeater ID="repiter_partidos" runat="server"  >
                                                                  <ItemTemplate >
-                                                                    
-                                                                       <tr>
-                                                                       
+                                                                    <tr>                                                                       
                                                                            <asp:Label ID="idPartido" runat="server" Text=<%# Eval("idPartido") %> Visible="false"></asp:Label>
                                                                            <td><%# Eval("equipoLocal.nombre") %></td>
                                                                            <td><asp:TextBox ID="txtGolesLocal" Text=<%# Eval("golesLocal") %> runat="server" Width="30px" ></asp:TextBox> </td> <td>&nbsp&nbsp</td>
-                                                                           <asp:CompareValidator ID="CompareValidator1" runat="server" ErrorMessage="Debe completar ambos campos" ControlToValidate="txtGolesLocal" SetFocusOnError="True" Visible="False" Type="Integer" Operator="DataTypeCheck" ></asp:CompareValidator>
-                                                                                <td>--</td>
+                                                                           <asp:CompareValidator ID="validadorLocal" runat="server" ValueToCompare ="0" Operator="GreaterThanEqual" ErrorMessage="Ha ingresado datos incorrectos para un resultado." ControlToCompare="txtGolesLocal" ControlToValidate="txtGolesLocal" SetFocusOnError="True" Visible="False" Type="Integer"> </asp:CompareValidator>
+                                                                           <td>--</td>
                                                                            <td><asp:TextBox ID="txtGolesVisitante" runat="server"  Text=<%# Eval("golesVisitante") %>  Width="30px"></asp:TextBox> </td> <td>&nbsp&nbsp</td>
-                                                                             <td><%# Eval("equipoVisitante.nombre")%></td>
-                                                                            </tr>
-                                                                                         
-         <%--<asp:CompareValidator ID="CompareValidator2" runat="server" ErrorMessage="Debe completar ambos campos" ControlToCompare="txtGolesLocal" ControlToValidate="txtGolesVisitante" SetFocusOnError="True" Visible="False" Type="Integer">--%>
+                                                                           <asp:CompareValidator ID="validadorVisita" runat="server" ErrorMessage="Ha ingresado datos incorrectos para un resultado." ControlToCompare="txtGolesVisitante" ControlToValidate="txtGolesLocal" SetFocusOnError="True" ValueToCompare ="0" Operator="GreaterThanEqual" Visible="False" Type="Integer"> </asp:CompareValidator>
+                                                                           <td><%# Eval("equipoVisitante.nombre")%></td>
+                                                                           </tr>
+                                                                     <asp:ValidationSummary ID="sumario" runat="server" />
                                                                      </ItemTemplate>
                                                                     </asp:Repeater>
-                                                                      </table>
-
+                                                                </table>
                                                         </div>
                                                          </div>
                                                     </div></div>
 
                       <div class="col-md-3">
                                 <asp:Button ID="btnGuardar" CssClass="btn btn-primary btn-lg" CommandArgument="" runat="server" Text="Guardar" OnClientClick="return confirm('¿Estas seguro que deseas guardar los resultados?');ocultarPaneles();focus();" OnClick="btnGuardar_Click" />
-                         </div>
+                                <asp:Button ID="btnCancelar" CssClass="btn btn-primary btn-lg" CommandArgument="" runat="server" Text="Cancelar" OnClientClick="return confirm('¿Estas seguro que deseas cancelar la operacion?');ocultarPaneles();focus();" OnClick="btnCancelar_Click"  style="margin-top: -73px; margin-left: 112px;"  />
+                                        
+                           </div>
                           </div>
                         </div>
                          <div class="panel-footer">
