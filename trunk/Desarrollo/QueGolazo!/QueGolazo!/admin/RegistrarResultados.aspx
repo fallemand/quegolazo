@@ -128,7 +128,7 @@ background: url(http://lh5.googleusercontent.com/-luDGEoQ_WZE/T1Ak-gta5MI/AAAAAA
                                                                            <td>--</td>
                                                                            <td><asp:TextBox ID="txtGolesVisitante" runat="server"  Text=<%# Eval("golesVisitante") %>  Width="30px"></asp:TextBox> </td> <td>&nbsp&nbsp</td>
                                                                            <asp:CompareValidator ID="validadorVisita" runat="server" ErrorMessage="Ha ingresado datos incorrectos para un resultado." ControlToCompare="txtGolesVisitante" ControlToValidate="txtGolesLocal" SetFocusOnError="True" ValueToCompare ="0" Operator="GreaterThanEqual" Visible="False" Type="Integer"> </asp:CompareValidator>
-                                                                           <td><%# Eval("equipoVisitante.nombre")%></td>
+                                                                           <td><%# Eval("equipoVisitante.nombre")%> </td>
                                                                            </tr>
                                                                      <asp:ValidationSummary ID="sumario" runat="server" />
                                                                      </ItemTemplate>

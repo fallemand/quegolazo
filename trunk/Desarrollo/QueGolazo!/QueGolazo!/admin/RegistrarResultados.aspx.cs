@@ -70,8 +70,7 @@ namespace QueGolazo_.admin
         }
 
         protected void btnGuardar_Click(object sender, EventArgs e)
-        {
-           
+        {           
                 panelFracaso.Visible = false;
                 panelExito.Visible = false;
                 bool guardoAlguno = false;
@@ -108,7 +107,7 @@ namespace QueGolazo_.admin
                             }
                         }
                         //verificamos el caso en que llene un txt y otro no
-                        else if ((valorGolesLocal == "" || valorGolesVisita == ""))
+                        else if ((valorGolesLocal == "" || valorGolesVisita == "") && !(partidoParaActualizar.equipoLocal.nombre != "LIBRE" && partidoParaActualizar.equipoVisitante.nombre != "LIBRE"))
                         {
                             litError.Text = "Quedó un resultado incompleto. Verifique e intente nuevamente.";
                             panelExito.Visible = false;
