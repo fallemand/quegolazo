@@ -103,7 +103,7 @@ namespace AccesoADatos
        /// <param name="nombre">El nombre del estado</param>
        /// <param name="ambito">El ambito del estado</param>
        /// <returns>Un objeto de tipo Estado</returns>
-       public Estado obtenerUnEstadoPorNombreYAmbito(string nombre, string ambito)
+       public Estado obtenerUnEstadoPorNombreYAmbito(Estado.enumNombre nombre, Estado.enumAmbito ambito)
        {
            SqlConnection con = new SqlConnection(cadenaDeConexion);
            SqlCommand cmd = new SqlCommand();
@@ -115,8 +115,8 @@ namespace AccesoADatos
                              FROM Estados
                              WHERE nombre = @nombre and ambito = @ambito";
                cmd.Parameters.Clear();
-               cmd.Parameters.AddWithValue("@nombre", nombre);
-               cmd.Parameters.AddWithValue("@ambito", ambito);
+               cmd.Parameters.AddWithValue("@nombre", nombre.ToString());
+               cmd.Parameters.AddWithValue("@ambito", ambito.ToString());
                cmd.CommandText = sql;
                dr = cmd.ExecuteReader();
                Estado respuesta = null;

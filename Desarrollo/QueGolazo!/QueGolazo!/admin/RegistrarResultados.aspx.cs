@@ -71,49 +71,69 @@ namespace QueGolazo_.admin
 
         protected void btnGuardar_Click(object sender, EventArgs e)
         {
-            try
-            {
-                foreach (RepeaterItem item in repiter_partidos.Items)
+           
+                panelFracaso.Visible = false;
+                panelExito.Visible = false;
+                bool guardoAlguno = false;
+                try
                 {
-
-
-                    int idCampeonato = ((Campeonato)Session["campeonato"]).idCampeonato;
-                    int idFecha = int.Parse(ddlFechas.SelectedValue);
-
-                    int idPartido = int.Parse(((Label)item.FindControl("idPartido")).Text);
-                    Partido partidoParaActualizar = obtenerPartido(idPartido, idFecha, idCampeonato);
-                 
-                    if (partidoParaActualizar.equipoLocal.nombre != "LIBRE" && partidoParaActualizar.equipoVisitante.nombre != "LIBRE")
+                    foreach (RepeaterItem item in repiter_partidos.Items)
                     {
-                        if (((TextBox)item.FindControl("txtGolesLocal")).Text != "")
+                        int idCampeonato = ((Campeonato)Session["campeonato"]).idCampeonato;
+                        int idFecha = int.Parse(ddlFechas.SelectedValue);
+                        int idPartido = int.Parse(((Label)item.FindControl("idPartido")).Text);
+                        Partido partidoParaActualizar = obtenerPartido(idPartido, idFecha, idCampeonato);
+                        string valorGolesLocal = ((TextBox)item.FindControl("txtGolesLocal")).Text;
+                        string valorGolesVisita = ((TextBox)item.FindControl("txtGolesVisitante")).Text;
+
+                        //validamos que no sea fecha libre y tambien que no tenga algun campo vacio en el resultado
+                        if (partidoParaActualizar.equipoLocal.nombre != "LIBRE" && partidoParaActualizar.equipoVisitante.nombre != "LIBRE" && valorGolesLocal != "" && valorGolesVisita != "")
                         {
-                            partidoParaActualizar.golesLocal = int.Parse(((TextBox)item.FindControl("txtGolesLocal")).Text);
+                            partidoParaActualizar.golesLocal = int.Parse(valorGolesLocal);
+                            partidoParaActualizar.golesVisitante = int.Parse(valorGolesVisita);
+                            if (partidoParaActualizar.golesLocal >= 0 && partidoParaActualizar.golesVisitante >= 0)
+                            {
+                                DAOEstado daoestado = new DAOEstado();
+                                Estado nuevoEstado = daoestado.obtenerUnEstadoPorNombreYAmbito(Estado.enumNombre.JUGADO, Estado.enumAmbito.PARTIDO);
+                                partidoParaActualizar.estado = nuevoEstado;
+                                DAOPartido daoPartido = new DAOPartido();
+                                daoPartido.actualizarUnPartido(partidoParaActualizar);
+                                guardoAlguno = true;
+                            }
+                            else {
+                                litError.Text = "No se pueden guardar resulados negativos. Verifique e intente nuevamente.";
+                                panelExito.Visible = false;
+                                panelFracaso.Visible = true;
+                                break;
+                            }
                         }
-                        if (((TextBox)item.FindControl("txtGolesVisitante")).Text != "")
+                        //verificamos el caso en que llene un txt y otro no
+                        else if ((valorGolesLocal == "" || valorGolesVisita == ""))
                         {
-                            partidoParaActualizar.golesVisitante = int.Parse(((TextBox)item.FindControl("txtGolesVisitante")).Text);
+                            litError.Text = "Quedó un resultado incompleto. Verifique e intente nuevamente.";
+                            panelExito.Visible = false;
+                            panelFracaso.Visible = true;
+                            break;
                         }
-                        //DAOEstado daoestado = new DAOEstado();
-                        //Estado es=daoestado.obtenerUnEstadoPorNombreYAmbito(Estado.enumAmbito.PARTIDO.ToString(), Estado.enumNombre.JUGADO.ToString());
-                        Estado es = new Estado() { ambito = Estado.enumAmbito.PARTIDO, idEstado = 6, nombre = Estado.enumNombre.JUGADO };
-                        partidoParaActualizar.estado = es;
-                        DAOPartido daoPartido = new DAOPartido();
-                        daoPartido.actualizarUnPartido(partidoParaActualizar);
                     }
-
+                    if (guardoAlguno)
+                    {
+                        litExito.Text = "Se registraron con éxito los resultados!";
+                        panelFracaso.Visible = false;
+                        panelExito.Visible = true;
+                    }
                 }
-                litExito.Text = "Se registraron con éxito los resultados!";
-                panelExito.Visible = true;
-
-            }
-            
+                catch (FormatException ex)
+                {
+                    litError.Text = "Ha ingresado valores incorrectos en los resultados. Verifique e intente nuevamente.";
+                    panelFracaso.Visible = true;
+                }
                 catch (Exception ex)
                 {
                     litError.Text = ex.Message;
                     panelFracaso.Visible = true;
                 }
-		
-           
+            
         }
 
         private Partido obtenerPartido(long idPartido, int idFecha, int idCampeonato)
@@ -136,6 +156,11 @@ namespace QueGolazo_.admin
                     break;
             }
             return respuesta;
+        }
+
+        protected void btnCancelar_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("Campeonatos.aspx");
         }
 
 
