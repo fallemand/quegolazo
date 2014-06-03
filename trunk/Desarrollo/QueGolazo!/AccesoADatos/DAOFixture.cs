@@ -60,13 +60,12 @@ namespace AccesoADatos
             try
             {
 
-                string sql = @"INSERT INTO Fechas (idFecha,idCampeonato, nombre) 
-                                            VALUES (@idFecha,@idCampeonato,@nombre)";
+                string sql = @"INSERT INTO Fechas (idFecha,idCampeonato) 
+                                            VALUES (@idFecha,@idCampeonato)";
 
                 cmd.Parameters.Clear();
                 cmd.Parameters.AddWithValue("@idFecha", fechaDeUnCampeoanto.numeroDeFecha);
                 cmd.Parameters.AddWithValue("@idCampeonato", idCampeonato);
-                cmd.Parameters.AddWithValue("@nombre", fechaDeUnCampeoanto.numeroDeFecha);
                 cmd.CommandText = sql;
                 cmd.ExecuteNonQuery();
 
