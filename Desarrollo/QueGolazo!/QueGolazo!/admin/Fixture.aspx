@@ -106,7 +106,23 @@ background: url(http://lh5.googleusercontent.com/-luDGEoQ_WZE/T1Ak-gta5MI/AAAAAA
                             <asp:Button ID="btnVolverAGenerar" CssClass="btn btn-primary btn-lg" runat="server" Text="Volver a Generar" OnClientClick="return confirmar();ocultarPaneles();focus()" OnClick="btnVolverAGenerar_Click" />
                             <asp:Button ID="btnCancelar" CssClass="btn btn-primary btn-lg" runat="server" Text="Cancelar" OnClientClick="ocultarPaneles();focus()" OnClick="btnCancelar_Click" />
                              <br/>
-                              <h3>Ir a la fecha: <asp:DropDownList ID="ddlFechas" runat="server" OnSelectedIndexChanged="ddlFechas_SelectedIndexChanged" AutoPostBack="True"></asp:DropDownList></h3>     
+                            
+                            <div class="row">
+                                <br/>
+                                <div class="col-md-9">
+                                     <asp:Panel ID="panelExito" runat="server" CssClass="well-sm alert-success" 
+                                        Visible="False"><small>
+                                        <asp:Literal ID="litExito" runat="server"></asp:Literal></small>
+                                    </asp:Panel>
+                                    <asp:Panel ID="panelFracaso" runat="server" CssClass="well-sm alert-danger" 
+                                        Visible="False">
+                                        <small><asp:Literal ID="litError" runat="server"></asp:Literal></small>
+                                    </asp:Panel>
+                                    <small><asp:ValidationSummary ID="vsSumario" runat="server" CssClass="well-sm alert-danger" /></small>
+                                </div>
+                                
+                            </div>
+                              <h4>Ir a la fecha: <asp:DropDownList ID="ddlFechas" runat="server" OnSelectedIndexChanged="ddlFechas_SelectedIndexChanged" AutoPostBack="True"></asp:DropDownList></h4>     
                              <div class="row">
                                 
                                         <asp:Repeater ID="repiter_fechas" runat="server" OnItemDataBound="repiter_fechas_ItemDataBound">
@@ -150,20 +166,7 @@ background: url(http://lh5.googleusercontent.com/-luDGEoQ_WZE/T1Ak-gta5MI/AAAAAA
                                     </div>
                            </div>
                          <div class="panel-footer">
-                            <div class="row">
-                                <div class="col-md-9">
-                                     <asp:Panel ID="panelExito" runat="server" CssClass="well-sm alert-success" 
-                                        Visible="False"><small>
-                                        <asp:Literal ID="litExito" runat="server"></asp:Literal></small>
-                                    </asp:Panel>
-                                    <asp:Panel ID="panelFracaso" runat="server" CssClass="well-sm alert-danger" 
-                                        Visible="False">
-                                        <small><asp:Literal ID="litError" runat="server"></asp:Literal></small>
-                                    </asp:Panel>
-                                    <small><asp:ValidationSummary ID="vsSumario" runat="server" CssClass="well-sm alert-danger" /></small>
-                                </div>
-                                
-                            </div>
+                            
                             <br />
                         </div>
                 </div>

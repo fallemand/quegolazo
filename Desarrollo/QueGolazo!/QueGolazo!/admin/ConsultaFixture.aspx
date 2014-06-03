@@ -104,7 +104,7 @@ background: url(http://lh5.googleusercontent.com/-luDGEoQ_WZE/T1Ak-gta5MI/AAAAAA
                            
                          <asp:Button ID="btnVolver" CssClass="btn btn-primary btn-lg" runat="server" Text="Volver"  OnClick="btnVolver_Click" />
                              <br/>
-                              <h3>Ir a la fecha: <asp:DropDownList ID="ddlFechas" runat="server" OnSelectedIndexChanged="ddlFechas_SelectedIndexChanged" AutoPostBack="True"></asp:DropDownList></h3>     
+                              <h4>Ir a la fecha: <asp:DropDownList ID="ddlFechas" runat="server" OnSelectedIndexChanged="ddlFechas_SelectedIndexChanged" AutoPostBack="True"></asp:DropDownList></h4>     
                              <div class="row">
                                 
                                         <asp:Repeater ID="repiter_fechas" runat="server" OnItemDataBound="repiter_fechas_ItemDataBound">

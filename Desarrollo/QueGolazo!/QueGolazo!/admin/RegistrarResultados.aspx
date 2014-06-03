@@ -104,7 +104,7 @@ background: url(http://lh5.googleusercontent.com/-luDGEoQ_WZE/T1Ak-gta5MI/AAAAAA
                             </div>
                         </div>
                         <div class="panel-body">
-                            <h3> Fecha: <asp:DropDownList ID="ddlFechas" runat="server" OnSelectedIndexChanged="ddlFechas_SelectedIndexChanged" AutoPostBack="True" Width="50px"></asp:DropDownList></h3>
+                            <h4> Fecha: <asp:DropDownList ID="ddlFechas" runat="server" OnSelectedIndexChanged="ddlFechas_SelectedIndexChanged" AutoPostBack="True" Width="50px"></asp:DropDownList></h4>
                                 
                                 
 

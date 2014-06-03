@@ -132,7 +132,6 @@ namespace AccesoADatos
                     {
                         cmd.Parameters.AddWithValue("@idEquipoVisitante", partidoDeUnaFecha.equipoVisitante.idEquipo);
                     }
-                    cmd.Parameters.AddWithValue("@idEquipoVisitante", partidoDeUnaFecha.equipoVisitante.idEquipo);
                     cmd.CommandText = sql;
                     cmd.ExecuteNonQuery();
                     numeroDePartido++;
