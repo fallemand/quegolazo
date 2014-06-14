@@ -1,7 +1,20 @@
 /* Make something awesome! */
+body, html {
+  height:100%;
+}
+
 body {
   background-color:#fcfcfc;
   color: #555;
+  padding-top: 50px;
+  padding-bottom: 68px;
+}
+
+.wrapper {
+    min-height: 100%;
+    height: auto !important;
+    height: 100%;
+    margin: 0 auto -192px; /* the bottom margin is the negative value of the footer's height */
 }
 
 .navbar {
@@ -186,7 +199,7 @@ padding-bottom: 5px;
   border-left: 6px solid transparent;
   border-right: 6px solid transparent;
   border-bottom: 6px solid white;
-  position: absolute;
+  position: |;
   top: -6px;
   left: 10px;
 }
@@ -207,83 +220,67 @@ padding-bottom: 5px;
 }
 
 
-
 /*------------------------------------------------------------------
-[5. Extra / .extra]
+[6. Footer/ .footer]
 */
-
-.extra {
-  position: absolute;
-  bottom:38px;
-  border-top: 1px solid #585858;
-  border-bottom: 1px solid #000;
-  width: 100%;
-
+.footer, .push {
+    height: 192px; /* .push must be the same height as .footer */
 }
 
-.extra-inner {
+.footer {
+  border-top: 1px solid #585858;
+  width: 100%;
+}
+
+.footer-superior {
   padding: 8px 0;
   font-size: 11px;
   color: #666;
   background: #1A1A1A;
+  border-bottom: 1px solid #000;
 }
 
-.extra-inner h4 {
+.footer-superior h4 {
   color: #bbb;
+  font-weight: 400;
+  margin-bottom: 1em;
 }
 
-.extra a {
+.footer-superior a {
   color: #666;
 }
 
-
-.extra h4 {
-  margin-bottom: 1em;
-
-  font-weight: 400;
-}
-
-.extra ul {
+.footer-superior ul {
   padding: 0;
   margin: 0;
 }
 
-.extra li {
+.footer-superior li {
   margin-bottom: .6em;
-
   list-style: none;
 }
 
-
-
-
-/*------------------------------------------------------------------
-[6. Footer/ .footer]
-*/
-
-.footer {
-  position: absolute;
-  bottom: 0;
+.footer-inferior {
   width: 100%;
   /* Set the fixed height of the footer here */
   border-top: 1px solid #292929;
-}
-
-.footer-inner {
   padding: 10px 0;
   font-size: 12px;
   background: #111;
   color: #999;
 }
 
-.footer a {
+.footer-inferior a {
   color: #999;
 }
 
-.footer a:hover {
+.footer-inferior a:hover {
   color: #FFF;
   text-decoration: none;
 }
+
+/*------------------------------------------------------------------*/
+
 
 
 [class^="flaticon-"]:before, [class*=" flaticon-"]:before, [class^="flaticon-"]:after, [class*=" flaticon-"]:after {
@@ -371,3 +368,15 @@ padding: 5px 28px 23px;
   border-color: #E27C6B;
 }
 
+/* Panels */
+.panel .thumbnail {
+  margin-bottom:0px;
+}
+
+.panel .thumbnail img {
+  max-height:130px;
+}
+
+.panel .list-group-item {
+  padding: 6px 10px;
+}
