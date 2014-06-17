@@ -6,7 +6,10 @@ using System.Threading.Tasks;
 
 namespace Entidades
 {
-    public class Class1
+    public class Grupo
     {
+        public int idGrupo { get; set; }
+        public List<Equipo> equipos { get; set; }
+
     }
 }
