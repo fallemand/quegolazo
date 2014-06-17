@@ -57,10 +57,66 @@
     <Reference Include="System.EnterpriseServices" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="admin.login.aspx" />
+    <Content Include="admin.registrar.aspx" />
+    <Content Include="admin.torneo.index.aspx" />
+    <Content Include="admin.torneo.mis-torneos.aspx" />
+    <Content Include="css\bootstrap.css" />
+    <Content Include="css\bootstrapValidator.css" />
+    <Content Include="css\flaticon.css" />
+    <Content Include="css\quegolazo.css" />
+    <Content Include="fonts\flaticon.html" />
+    <Content Include="fonts\flaticon.svg" />
+    <Content Include="fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="img\theme\body-bg.png" />
+    <Content Include="img\theme\logo.png" />
+    <Content Include="img\theme\stripe.png" />
+    <Content Include="js\bootstrap.js" />
+    <Content Include="js\bootstrap.min.js" />
+    <Content Include="js\bootstrapValidator.js" />
+    <Content Include="js\jquery.min.js" />
+    <Content Include="js\jquery.validate.js" />
+    <Content Include="js\messages_es_AR.js" />
     <Content Include="ResgistrarCampeonato.aspx" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="admin.login.aspx.cs">
+      <DependentUpon>admin.login.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="admin.login.aspx.designer.cs">
+      <DependentUpon>admin.login.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="admin.Master.cs">
+      <DependentUpon>admin.Master</DependentUpon>
+    </Compile>
+    <Compile Include="admin.Master.designer.cs">
+      <DependentUpon>admin.Master</DependentUpon>
+    </Compile>
+    <Compile Include="admin.registrar.aspx.cs">
+      <DependentUpon>admin.registrar.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="admin.registrar.aspx.designer.cs">
+      <DependentUpon>admin.registrar.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="admin.torneo.index.aspx.cs">
+      <DependentUpon>admin.torneo.index.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="admin.torneo.index.aspx.designer.cs">
+      <DependentUpon>admin.torneo.index.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="admin.torneo.master.cs">
+      <DependentUpon>admin.torneo.master</DependentUpon>
+    </Compile>
+    <Compile Include="admin.torneo.master.designer.cs">
+      <DependentUpon>admin.torneo.master</DependentUpon>
+    </Compile>
+    <Compile Include="admin.torneo.mis-torneos.aspx.cs">
+      <DependentUpon>admin.torneo.mis-torneos.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="admin.torneo.mis-torneos.aspx.designer.cs">
+      <DependentUpon>admin.torneo.mis-torneos.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ResgistrarCampeonato.aspx.cs">
       <DependentUpon>ResgistrarCampeonato.aspx</DependentUpon>
@@ -71,6 +127,15 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="admin.Master" />
+    <Content Include="admin.torneo.master" />
+    <Content Include="fonts\flaticon.eot" />
+    <Content Include="fonts\flaticon.ttf" />
+    <Content Include="fonts\flaticon.woff" />
+    <Content Include="fonts\glyphicons-halflings-regular.eot" />
+    <Content Include="fonts\glyphicons-halflings-regular.ttf" />
+    <Content Include="fonts\glyphicons-halflings-regular.woff" />
+    <Content Include="img\theme\Thumbs.db" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
