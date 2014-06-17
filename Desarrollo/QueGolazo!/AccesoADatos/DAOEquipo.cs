@@ -11,7 +11,7 @@ namespace AccesoADatos
 {
    public class DAOEquipo
     {
-       private string cadenaDeConexion = System.Configuration.ConfigurationManager.ConnectionStrings[System.Environment.MachineName].ConnectionString;
+       private string cadenaDeConexion = System.Configuration.ConfigurationManager.ConnectionStrings["localhost"].ConnectionString;
        
         /// <summary>
         ///  Inserta un objeto Equipo en la base de datos, junto con su Delegado

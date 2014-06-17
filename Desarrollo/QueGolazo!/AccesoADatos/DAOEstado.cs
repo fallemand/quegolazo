@@ -12,7 +12,7 @@ namespace AccesoADatos
 {
     public class DAOEstado
     {
-       private string cadenaDeConexion = System.Configuration.ConfigurationManager.ConnectionStrings[System.Environment.MachineName].ConnectionString;
+        private string cadenaDeConexion = System.Configuration.ConfigurationManager.ConnectionStrings["localhost"].ConnectionString;
 
       /// <summary>
        /// Obtiene todos los registros de la tabla Estados

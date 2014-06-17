@@ -162,6 +162,25 @@ namespace QueGolazo_.admin
             Response.Redirect("Campeonatos.aspx");
         }
 
+        protected void repiter_partidos_ItemDataBound(object sender, RepeaterItemEventArgs e)
+        {
+            if (e.Item.ItemType == ListItemType.Item || e.Item.ItemType == ListItemType.AlternatingItem)
+            {
+                string nombreLocal = ((Partido)e.Item.DataItem).equipoLocal.nombre;
+                string nombreVisitante = ((Partido)e.Item.DataItem).equipoVisitante.nombre;
+
+                if (nombreLocal == "LIBRE" || nombreVisitante == "LIBRE")
+                {
+                    TextBox golesLocal = (TextBox)e.Item.FindControl("txtGolesLocal");
+                    golesLocal.Enabled = false;
+                    TextBox golesVisita = (TextBox)e.Item.FindControl("txtGolesVisitante");
+                    golesVisita.Enabled = false;
+                }
+
+            }
+           
+        }
+
 
         
 
