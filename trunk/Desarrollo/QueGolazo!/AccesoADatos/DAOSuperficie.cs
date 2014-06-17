@@ -11,8 +11,8 @@ namespace AccesoADatos
 {
     public class DAOSuperficie
     {
-        string cadenaDeConexion = System.Configuration.ConfigurationManager.ConnectionStrings[System.Environment.MachineName].ConnectionString;
-        
+       
+        private string cadenaDeConexion = System.Configuration.ConfigurationManager.ConnectionStrings["localhost"].ConnectionString; 
         /// <summary>
         /// Obtiene un objeto Datatable con las superficies de cancha registrados en la tabla SuperficiesDeCancha.
         /// </summary>

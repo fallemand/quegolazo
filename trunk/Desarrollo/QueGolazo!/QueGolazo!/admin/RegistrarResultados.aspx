@@ -118,7 +118,7 @@ background: url(http://lh5.googleusercontent.com/-luDGEoQ_WZE/T1Ak-gta5MI/AAAAAA
                                                             <div class="col-md-9">
                                            
                                                                 <table>                                        
-                                                                <asp:Repeater ID="repiter_partidos" runat="server"  >
+                                                                <asp:Repeater ID="repiter_partidos" runat="server" OnItemDataBound="repiter_partidos_ItemDataBound"   >
                                                                  <ItemTemplate >
                                                                     <tr>                                                                       
                                                                            <asp:Label ID="idPartido" runat="server" Text=<%# Eval("idPartido") %> Visible="false"></asp:Label>

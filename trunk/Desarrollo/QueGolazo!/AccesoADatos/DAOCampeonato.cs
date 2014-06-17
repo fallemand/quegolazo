@@ -12,7 +12,7 @@ namespace AccesoADatos
    public class DAOCampeonato
     {
 
-       private string cadenaDeConexion = System.Configuration.ConfigurationManager.ConnectionStrings[System.Environment.MachineName].ConnectionString;
+       private string cadenaDeConexion = System.Configuration.ConfigurationManager.ConnectionStrings["localhost"].ConnectionString;
 
        public DAOCampeonato()
        {

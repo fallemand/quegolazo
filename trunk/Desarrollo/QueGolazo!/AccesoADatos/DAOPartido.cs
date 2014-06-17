@@ -11,7 +11,7 @@ namespace AccesoADatos
 {
     public class DAOPartido
     {
-        private string cadenaDeConexion = System.Configuration.ConfigurationManager.ConnectionStrings[System.Environment.MachineName].ConnectionString;
+        private string cadenaDeConexion = System.Configuration.ConfigurationManager.ConnectionStrings["localhost"].ConnectionString;
       
         /// <summary>
         /// Obtiene todos los partidos de una fecha determinada.
