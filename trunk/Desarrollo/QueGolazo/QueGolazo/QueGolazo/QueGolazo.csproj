@@ -83,36 +83,42 @@
   <ItemGroup>
     <Compile Include="admin.login.aspx.cs">
       <DependentUpon>admin.login.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="admin.login.aspx.designer.cs">
       <DependentUpon>admin.login.aspx</DependentUpon>
     </Compile>
     <Compile Include="admin.Master.cs">
       <DependentUpon>admin.Master</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="admin.Master.designer.cs">
       <DependentUpon>admin.Master</DependentUpon>
     </Compile>
     <Compile Include="admin.registrar.aspx.cs">
       <DependentUpon>admin.registrar.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="admin.registrar.aspx.designer.cs">
       <DependentUpon>admin.registrar.aspx</DependentUpon>
     </Compile>
     <Compile Include="admin.torneo.index.aspx.cs">
       <DependentUpon>admin.torneo.index.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="admin.torneo.index.aspx.designer.cs">
       <DependentUpon>admin.torneo.index.aspx</DependentUpon>
     </Compile>
     <Compile Include="admin.torneo.master.cs">
       <DependentUpon>admin.torneo.master</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="admin.torneo.master.designer.cs">
       <DependentUpon>admin.torneo.master</DependentUpon>
     </Compile>
     <Compile Include="admin.torneo.mis-torneos.aspx.cs">
       <DependentUpon>admin.torneo.mis-torneos.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="admin.torneo.mis-torneos.aspx.designer.cs">
       <DependentUpon>admin.torneo.mis-torneos.aspx</DependentUpon>
