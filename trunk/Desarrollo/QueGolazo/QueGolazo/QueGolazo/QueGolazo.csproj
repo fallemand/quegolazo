@@ -69,6 +69,7 @@
     <Content Include="fonts\flaticon.svg" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="img\theme\body-bg.png" />
+    <Content Include="img\theme\load.gif" />
     <Content Include="img\theme\logo.png" />
     <Content Include="img\theme\stripe.png" />
     <Content Include="js\bootstrap.js" />
@@ -141,7 +142,6 @@
     <Content Include="fonts\glyphicons-halflings-regular.eot" />
     <Content Include="fonts\glyphicons-halflings-regular.ttf" />
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
-    <Content Include="img\theme\Thumbs.db" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
