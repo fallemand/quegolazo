@@ -11,7 +11,32 @@ namespace QueGolazo
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+            
 
         }
+
+        protected void btnRegistrarse_Click(object sender, EventArgs e)
+        {
+            btnRegistrarse.Enabled = false;
+            panFracaso.Visible = false;
+            panExito.Visible = false;
+            System.Threading.Thread.Sleep(5000);
+            //Hacer aca todo el registro
+            //...
+            //...
+
+            //Si salio todo bien
+            bool registroExitoso = true;
+            if (registroExitoso)
+            {
+                panExito.Visible = true;
+
+            }
+            else
+            {
+                panFracaso.Visible = true;
+                btnRegistrarse.Enabled = true;
+            }
+        } 
     }
 }
