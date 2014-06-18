@@ -47,10 +47,15 @@
                 </div>
             </div>
             <div class="col-md-5">
-                <asp:Button ID="btnRegistrarse" runat="server" Text="Registrar" OnClientClick="return esValido();" OnClick="btnRegistrarse_Click" CssClass="btn btn-success pull-right" UseSubmitBehavior="true"/>
+                <asp:ScriptManager ID="MainScriptManager" runat="server" />
+                <asp:UpdatePanel ID="UpdatePanel1" runat="server">
+                    <ContentTemplate>
+                        <asp:Button ID="btnRegistrarse" runat="server" Text="Registrar" OnClientClick="return esValido();" OnClick="btnRegistrarse_Click" CssClass="btn btn-success pull-right" UseSubmitBehavior="true"/>
+                    </ContentTemplate>
+                 </asp:UpdatePanel>
             </div>
           </div>
-          <asp:ScriptManager ID="MainScriptManager" runat="server" />
+          
             <asp:UpdatePanel ID="pnlRegistrar" runat="server">
                  <Triggers>
                     <asp:AsyncPostBackTrigger controlid="btnRegistrarse" eventname="Click" />
