@@ -25,6 +25,8 @@ namespace QueGolazo_.admin
         {
             DAOFixture gestor = new DAOFixture();
             ((Campeonato)Session["campeonato"]).fixture = gestor.obtenerFixtureDeUnCampeonato(((Campeonato)Session["campeonato"]).idCampeonato);
+            // Le seteamos el nombre del campeonato
+            lblNombreCampeonato.Text = ((Campeonato)Session["campeonato"]).nombre.ToString();
             ddlFechas.DataSource = ((Campeonato)Session["campeonato"]).fixture ;
             ddlFechas.DataValueField = "numeroDeFecha";
             ddlFechas.DataTextField = "numeroDeFecha";
@@ -70,68 +72,83 @@ namespace QueGolazo_.admin
         }
 
         protected void btnGuardar_Click(object sender, EventArgs e)
-        {           
-                panelFracaso.Visible = false;
-                panelExito.Visible = false;
-                bool guardoAlguno = false;
-                try
+        {
+            panelFracaso.Visible = false;
+            panelExito.Visible = false;
+            bool guardoAlguno = false;
+            bool resultadoIncompleto = false;
+            bool resultadoNegativo = false;
+            try
+            {
+                foreach (RepeaterItem item in repiter_partidos.Items)
                 {
-                    foreach (RepeaterItem item in repiter_partidos.Items)
-                    {
-                        int idCampeonato = ((Campeonato)Session["campeonato"]).idCampeonato;
-                        int idFecha = int.Parse(ddlFechas.SelectedValue);
-                        int idPartido = int.Parse(((Label)item.FindControl("idPartido")).Text);
-                        Partido partidoParaActualizar = obtenerPartido(idPartido, idFecha, idCampeonato);
-                        string valorGolesLocal = ((TextBox)item.FindControl("txtGolesLocal")).Text;
-                        string valorGolesVisita = ((TextBox)item.FindControl("txtGolesVisitante")).Text;
+                    int idCampeonato = ((Campeonato)Session["campeonato"]).idCampeonato;
+                    int idFecha = int.Parse(ddlFechas.SelectedValue);
+                    int idPartido = int.Parse(((Label)item.FindControl("idPartido")).Text);
+                    Partido partidoParaActualizar = obtenerPartido(idPartido, idFecha, idCampeonato);
+                    string valorGolesLocal = ((TextBox)item.FindControl("txtGolesLocal")).Text;
+                    string valorGolesVisita = ((TextBox)item.FindControl("txtGolesVisitante")).Text;
 
-                        //validamos que no sea fecha libre y tambien que no tenga algun campo vacio en el resultado
-                        if (partidoParaActualizar.equipoLocal.nombre != "LIBRE" && partidoParaActualizar.equipoVisitante.nombre != "LIBRE" && valorGolesLocal != "" && valorGolesVisita != "")
+                    //validamos que no sea fecha libre y tambien que no tenga algun campo vacio en el resultado
+                    if (partidoParaActualizar.equipoLocal.nombre != "LIBRE" && partidoParaActualizar.equipoVisitante.nombre != "LIBRE" && valorGolesLocal != "" && valorGolesVisita != "")
+                    {
+                        partidoParaActualizar.golesLocal = int.Parse(valorGolesLocal);
+                        partidoParaActualizar.golesVisitante = int.Parse(valorGolesVisita);
+                        if (partidoParaActualizar.golesLocal >= 0 && partidoParaActualizar.golesVisitante >= 0)
                         {
-                            partidoParaActualizar.golesLocal = int.Parse(valorGolesLocal);
-                            partidoParaActualizar.golesVisitante = int.Parse(valorGolesVisita);
-                            if (partidoParaActualizar.golesLocal >= 0 && partidoParaActualizar.golesVisitante >= 0)
-                            {
-                                DAOEstado daoestado = new DAOEstado();
-                                Estado nuevoEstado = daoestado.obtenerUnEstadoPorNombreYAmbito(Estado.enumNombre.JUGADO, Estado.enumAmbito.PARTIDO);
-                                partidoParaActualizar.estado = nuevoEstado;
-                                DAOPartido daoPartido = new DAOPartido();
-                                daoPartido.actualizarUnPartido(partidoParaActualizar);
-                                guardoAlguno = true;
-                            }
-                            else {
-                                litError.Text = "No se pueden guardar resulados negativos. Verifique e intente nuevamente.";
-                                panelExito.Visible = false;
-                                panelFracaso.Visible = true;
-                                break;
-                            }
+                            DAOEstado daoestado = new DAOEstado();
+                            Estado nuevoEstado = daoestado.obtenerUnEstadoPorNombreYAmbito(Estado.enumNombre.JUGADO, Estado.enumAmbito.PARTIDO);
+                            partidoParaActualizar.estado = nuevoEstado;
+                            DAOPartido daoPartido = new DAOPartido();
+                            daoPartido.actualizarUnPartido(partidoParaActualizar);
+                            guardoAlguno = true;
                         }
-                        //verificamos el caso en que llene un txt y otro no
-                        else if ((valorGolesLocal == "" || valorGolesVisita == "") && !(partidoParaActualizar.equipoLocal.nombre != "LIBRE" && partidoParaActualizar.equipoVisitante.nombre != "LIBRE"))
+                        else
                         {
-                            litError.Text = "Quedó un resultado incompleto. Verifique e intente nuevamente.";
+                            resultadoNegativo = true;
+                            litError.Text = "No se pueden guardar resulados negativos. Verifique e intente nuevamente.";
                             panelExito.Visible = false;
                             panelFracaso.Visible = true;
                             break;
                         }
                     }
-                    if (guardoAlguno)
+                    //verificamos el caso en que llene un txt y otro no
+                    else
                     {
-                        litExito.Text = "Se registraron con éxito los resultados!";
-                        panelFracaso.Visible = false;
-                        panelExito.Visible = true;
+                        if (partidoParaActualizar.equipoLocal.nombre != "LIBRE" && partidoParaActualizar.equipoVisitante.nombre != "LIBRE")
+                        {
+                            if (valorGolesLocal == "" || valorGolesVisita == "")
+                            {
+                                resultadoIncompleto = true;
+                                litError.Text = "Quedó un resultado incompleto. Verifique e intente nuevamente.";
+                                panelExito.Visible = false;
+                                panelFracaso.Visible = true;
+                                break;
+                            }
+                        }
+
                     }
+
+
                 }
-                catch (FormatException ex)
+
+                if (guardoAlguno && !resultadoIncompleto && !resultadoNegativo)
                 {
-                    litError.Text = "Ha ingresado valores incorrectos en los resultados. Verifique e intente nuevamente.";
-                    panelFracaso.Visible = true;
+                    litExito.Text = "Se registraron con éxito los resultados!";
+                    panelFracaso.Visible = false;
+                    panelExito.Visible = true;
                 }
-                catch (Exception ex)
-                {
-                    litError.Text = ex.Message;
-                    panelFracaso.Visible = true;
-                }
+            }
+            catch (FormatException ex)
+            {
+                litError.Text = "Ha ingresado valores incorrectos en los resultados. Verifique e intente nuevamente.";
+                panelFracaso.Visible = true;
+            }
+            catch (Exception ex)
+            {
+                litError.Text = ex.Message;
+                panelFracaso.Visible = true;
+            }
             
         }
 
