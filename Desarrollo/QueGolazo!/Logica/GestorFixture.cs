@@ -34,7 +34,8 @@ namespace Logica
                     Partido partidoNuevo = new Partido()
                     {
                         equipoLocal = equiposParticipantes[j],
-                        equipoVisitante = equiposParticipantes[k]
+                        equipoVisitante = equiposParticipantes[k],
+                        estado = new Estado() { ambito = Estado.enumAmbito.PARTIDO, nombre = Estado.enumNombre.NO_JUGADO }
                     };
                     fechaNueva.partidos.Add(partidoNuevo);
                 }
