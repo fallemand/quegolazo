@@ -107,15 +107,17 @@ namespace AccesoADatos
         {
             try
             {
+                DAOEstado daoEstado =  new DAOEstado();
                 int numeroDePartido = 1;
                 foreach (Partido partidoDeUnaFecha in fechaDeUnCampeoanto.partidos)
                 {
-                    string sql = @"INSERT INTO Partidos (idPartido, idFecha, idCampeonato, idEquipoLocal, idEquipoVisitante) 
-                                            VALUES (@idPartido,@idFecha,@idCampeonato,@idEquipoLocal, @idEquipoVisitante)";
+                    string sql = @"INSERT INTO Partidos (idPartido, idFecha, idCampeonato, idEquipoLocal, idEquipoVisitante, idEstado) 
+                                            VALUES (@idPartido,@idFecha,@idCampeonato,@idEquipoLocal, @idEquipoVisitante, @idEstado)";
                     cmd.Parameters.Clear();
                     cmd.Parameters.AddWithValue("@idPartido", numeroDePartido);
                     cmd.Parameters.AddWithValue("@idFecha", fechaDeUnCampeoanto.numeroDeFecha);
                     cmd.Parameters.AddWithValue("@idCampeonato", idCampeonato);
+                    cmd.Parameters.AddWithValue("@idEstado", (daoEstado.obtenerUnEstadoPorNombreYAmbito(partidoDeUnaFecha.estado.nombre, partidoDeUnaFecha.estado.ambito)).idEstado);
                     if (partidoDeUnaFecha.equipoLocal.nombre == "LIBRE")
                     {
                         cmd.Parameters.AddWithValue("@idEquipoLocal", DBNull.Value);
