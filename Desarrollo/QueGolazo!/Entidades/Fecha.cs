@@ -11,6 +11,7 @@ namespace Entidades
         
         public int numeroDeFecha { get; set; }
         public List<Partido> partidos { get; set; }
+        public int? estaCompleta { get; set; }
         public Fecha()
         {
             partidos = new List<Partido>();

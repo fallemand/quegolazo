@@ -57,7 +57,7 @@ namespace QueGolazo_
                 DAOFixture daoFixture = new DAOFixture();
                 daoFixture.registrarFixtureParaUnCampeonato(c);
                 DAOCampeonato daoCampeonato = new DAOCampeonato();
-               daoCampeonato.cambiarEstadoDelCampeonato(new Estado() {idEstado =2},c.idCampeonato);
+                daoCampeonato.cambiarEstadoDelCampeonato(new Estado() {idEstado =2},c.idCampeonato);
                 litExito.Text = "El Fixture se registró con éxito!";
                 panelExito.Visible = true;
                 btnAceptar.Enabled = false;

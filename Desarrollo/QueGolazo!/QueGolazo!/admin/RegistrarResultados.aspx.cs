@@ -28,11 +28,14 @@ namespace QueGolazo_.admin
             // Le seteamos el nombre del campeonato
             lblNombreCampeonato.Text = ((Campeonato)Session["campeonato"]).nombre.ToString();
             ddlFechas.DataSource = ((Campeonato)Session["campeonato"]).fixture ;
+            //ddlFechas.DataSource = gestor.obtenerFechasIncompletas(((Campeonato)Session["campeonato"]).idCampeonato);
             ddlFechas.DataValueField = "numeroDeFecha";
             ddlFechas.DataTextField = "numeroDeFecha";
             ddlFechas.DataBind();
 
+            ddlFechas.SelectedValue = ultimaFechaIncompleta().ToString();
 
+         
             Fecha fecha = buscarFecha(Int32.Parse(ddlFechas.SelectedValue));
             repiter_partidos.DataSource = fecha.partidos;
             repiter_partidos.DataBind();
@@ -44,6 +47,35 @@ namespace QueGolazo_.admin
             repiter_partidos.DataSource = fecha.partidos;
             repiter_partidos.DataBind();
         }
+
+        public int ultimaFechaIncompleta()
+        {
+          DAOFixture daoFixture = new DAOFixture();
+          int idCampeonato = ((Campeonato)Session["campeonato"]).idCampeonato;
+          List<Fecha> listaFechasIncompletas = daoFixture.obtenerFechasIncompletas(idCampeonato);
+          int i = 0;
+          int mayor = 0;
+
+          foreach (Fecha f in listaFechasIncompletas)
+          {
+              if (i == 0)
+              {
+                  mayor = f.numeroDeFecha;
+                  i++;
+              }
+              else
+              {
+                  
+                  if (f.numeroDeFecha > mayor)
+                      mayor = f.numeroDeFecha;
+              }
+
+          }
+
+          return mayor;
+
+        }
+
 
         private Fecha buscarFecha(Int32 nroFecha)
         {
@@ -78,12 +110,16 @@ namespace QueGolazo_.admin
             bool guardoAlguno = false;
             bool resultadoIncompleto = false;
             bool resultadoNegativo = false;
+            bool hayPartidoLibre = false;
+            int cantidadDePartidosJugados = 0;
+            int cantidadDeItems = 0;
+            int idCampeonato = ((Campeonato)Session["campeonato"]).idCampeonato;
+            int idFecha = int.Parse(ddlFechas.SelectedValue);
             try
             {
                 foreach (RepeaterItem item in repiter_partidos.Items)
                 {
-                    int idCampeonato = ((Campeonato)Session["campeonato"]).idCampeonato;
-                    int idFecha = int.Parse(ddlFechas.SelectedValue);
+                    cantidadDeItems++;                    
                     int idPartido = int.Parse(((Label)item.FindControl("idPartido")).Text);
                     Partido partidoParaActualizar = obtenerPartido(idPartido, idFecha, idCampeonato);
                     string valorGolesLocal = ((TextBox)item.FindControl("txtGolesLocal")).Text;
@@ -102,6 +138,7 @@ namespace QueGolazo_.admin
                             DAOPartido daoPartido = new DAOPartido();
                             daoPartido.actualizarUnPartido(partidoParaActualizar);
                             guardoAlguno = true;
+                            cantidadDePartidosJugados++;
                         }
                         else
                         {
@@ -117,7 +154,7 @@ namespace QueGolazo_.admin
                     {
                         if (partidoParaActualizar.equipoLocal.nombre != "LIBRE" && partidoParaActualizar.equipoVisitante.nombre != "LIBRE")
                         {
-                            if (valorGolesLocal == "" || valorGolesVisita == "")
+                            if ((valorGolesLocal == "" && valorGolesVisita != "") || (valorGolesLocal != "" && valorGolesVisita == ""))
                             {
                                 resultadoIncompleto = true;
                                 litError.Text = "Quedó un resultado incompleto. Verifique e intente nuevamente.";
@@ -126,6 +163,9 @@ namespace QueGolazo_.admin
                                 break;
                             }
                         }
+                        else
+                            hayPartidoLibre = true;
+                        
 
                     }
 
@@ -138,6 +178,30 @@ namespace QueGolazo_.admin
                     panelFracaso.Visible = false;
                     panelExito.Visible = true;
                 }
+
+                DAOFixture daoFixture = new DAOFixture();
+                
+                //pregunta si hay partido libre
+                if (hayPartidoLibre)
+                {
+                    //se jugaron todos los partidos de la fecha, la fecha está Completa
+                    if (cantidadDePartidosJugados == (cantidadDeItems - 1))
+                      daoFixture.actualizarFecha(idFecha, idCampeonato, 1);
+                    else
+                      daoFixture.actualizarFecha(idFecha, idCampeonato, 0);
+                    
+                }
+                else
+                {
+                    if (cantidadDePartidosJugados == cantidadDeItems)
+                        daoFixture.actualizarFecha(idFecha, idCampeonato, 1);
+                    else
+                        daoFixture.actualizarFecha(idFecha, idCampeonato, 0);
+ 
+                }
+                               
+                               
+
             }
             catch (FormatException ex)
             {
