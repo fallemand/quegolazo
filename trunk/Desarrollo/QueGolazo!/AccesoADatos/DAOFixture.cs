@@ -79,6 +79,104 @@ namespace AccesoADatos
         }
         
         /// <summary>
+        /// Actualiza una Fecha: actualiza su estado a está completa.
+        /// Fecha Completa: todos sus partidos están jugados.
+        /// </summary>
+        /// <param name="idFechaAActualizar">idFecha a actualizar </param>
+        /// <param name="idCampeonato">id del Campeonato de esa fecha</param>
+        /// <returns>true o false</returns>
+        public bool actualizarFecha(int idFechaAActualizar, int idCampeonato, int estadoFecha)
+        {
+            bool b = false;
+            SqlConnection con = new SqlConnection(cadenaDeConexion);
+            SqlCommand cmd = new SqlCommand();
+            try
+            {
+                OperacionesAccesoADatos.conectar(con, cmd);
+                string sql = @"UPDATE Fechas SET estaCompleta = @estaCompleta WHERE idFecha = @idFecha
+                               AND idCampeonato = @idCampeonato";
+                cmd.Parameters.Clear();
+                cmd.Parameters.Add(new SqlParameter("@estaCompleta", estadoFecha));
+                cmd.Parameters.Add(new SqlParameter("@idFecha", idFechaAActualizar));
+                cmd.Parameters.Add(new SqlParameter("@idCampeonato", idCampeonato));
+
+                
+                cmd.CommandText = sql;
+
+                int filasAfectadas = cmd.ExecuteNonQuery();
+
+                if (filasAfectadas > 0)
+                    b = true;
+
+                return b;
+                    
+
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Ocurrió un problema al actualizar los datos: " + ex.Message);
+            }
+            finally
+            {
+                con.Close();
+            }
+        }
+
+        /// <summary>
+        /// Devuelve una lista de fechas incompletas
+        /// </summary>
+        /// <param name="idCampeonato">El id del campeonato </param>
+        /// <returns>Una lista generica con objetos Fecha</returns>
+        public List<Fecha> obtenerFechasIncompletas(int idCampeonato)
+        {
+            SqlConnection con = new SqlConnection(cadenaDeConexion);
+            SqlCommand cmd = new SqlCommand();
+            try
+            {
+                List<Fecha> respuesta = new List<Fecha>();
+
+                OperacionesAccesoADatos.conectar(con, cmd);
+                string sql = @"SELECT * FROM Fechas WHERE estaCompleta = 0
+                               AND idCampeonato = @idCampeonato";
+                cmd.Parameters.Clear();
+                cmd.Parameters.Add(new SqlParameter("@idCampeonato", idCampeonato));
+
+                cmd.CommandText = sql;
+
+                SqlDataReader dr = cmd.ExecuteReader();
+
+                while (dr.Read())
+                {
+                    Fecha f = new Fecha();
+                    DAOPartido daoPartido = new DAOPartido();
+                    f.numeroDeFecha = Int32.Parse(dr["idFecha"].ToString());
+
+                    f.estaCompleta = Int32.Parse(dr["estaCompleta"].ToString());
+                
+                    
+                    f.partidos = daoPartido.obtenerPartidosDeUnaFecha(idCampeonato, f.numeroDeFecha);
+
+                    if(f.estaCompleta == 0)
+                        respuesta.Add(f);
+ 
+                }
+                                   
+                
+                return respuesta;
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Error al intentar recuperar los datos: " + ex.Message);
+            }
+            finally
+            {
+                con.Close();
+            }
+        }
+               
+        
+
+        /// <summary>
         /// Devuelve el fixture de un campeonato registrado y diagramado
         /// </summary>
         /// <param name="idCampeonato">El id del campeonato registrado.</param>
