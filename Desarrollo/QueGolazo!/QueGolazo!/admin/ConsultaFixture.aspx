@@ -74,7 +74,7 @@ background: url(http://lh5.googleusercontent.com/-luDGEoQ_WZE/T1Ak-gta5MI/AAAAAA
                 <div class="col-md-2">
                    <div class="panel panel-default">
                         <div class="panel-heading">
-                            <h4>Menu</h4>
+                            <h4>Menú</h4>
                             <h4></h4>
                         </div>
                         <div class="panel-body">
@@ -103,7 +103,9 @@ background: url(http://lh5.googleusercontent.com/-luDGEoQ_WZE/T1Ak-gta5MI/AAAAAA
                         <div class="panel-body">
                            
                          <asp:Button ID="btnVolver" CssClass="btn btn-primary btn-lg" runat="server" Text="Volver"  OnClick="btnVolver_Click" />
-                             <br/>
+                            <br />
+                            <h4>Campeonato: <asp:Label ID="lblNombreCampeonato" runat="server" Text=""></asp:Label></h4>
+
                               <h4>Ir a la fecha: <asp:DropDownList ID="ddlFechas" runat="server" OnSelectedIndexChanged="ddlFechas_SelectedIndexChanged" AutoPostBack="True"></asp:DropDownList></h4>     
                              <div class="row">
                                 
