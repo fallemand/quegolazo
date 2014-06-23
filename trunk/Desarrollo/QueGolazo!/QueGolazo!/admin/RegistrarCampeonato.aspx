@@ -22,7 +22,7 @@
                 <div class="col-md-2">
                     <div class="panel panel-default">
                         <div class="panel-heading">
-                            <h4>Menu</h4>
+                            <h4>Menú</h4>
                             <h4></h4>
                         </div>
                         <div class="panel-body">
@@ -56,7 +56,7 @@
                                     <asp:TextBox ID="txtNombre" runat="server" CssClass="form-control" placeholder="Nombre del Campeonato (*)" MaxLength="50"></asp:TextBox>
                                 </div>
                              <asp:RequiredFieldValidator
-                              ID="rfvNombre" runat="server" ErrorMessage="Debe ingresar el nombre!" ControlToValidate="txtNombre" Display="None" SetFocusOnError="true"></asp:RequiredFieldValidator>
+                              ID="rfvNombre" runat="server" ErrorMessage="Debe ingresar el nombre del Campeonato!" ControlToValidate="txtNombre" Display="None" SetFocusOnError="true"></asp:RequiredFieldValidator>
                                 <br />
                             <h4>Tamaño de cancha (*)</h4>
                                <div class="input-group input-group-lg" title="Tamaño de la cancha">
@@ -69,8 +69,8 @@
                             <div class="input-group input-group-lg" title="Cantidad Maxima de jugadores">
                             <span class="input-group-addon"><i class="fa fa-list"></i></span>
                             <asp:TextBox ID="txtCantidadMaximaJugadores" runat="server" CssClass="form-control" placeholder="Cantidad máxima de jugadores. Ingrese 0 si es sin limite (*) " MaxLength="3"></asp:TextBox>
-                            <asp:RangeValidator ID="rvCantidadMaximaJugadores" runat="server" ControlToValidate="txtCantidadMaximaJugadores" MaximumValue="100" MinimumValue="0" ErrorMessage="La cantidad maxima de jugadores debe ser un numero comprendido entre 0 y 100" Type="Integer" Display="None"  SetFocusOnError="true"></asp:RangeValidator>
-                            <asp:RequiredFieldValidator ID="rfvCantidadMaximaJugadores" runat="server" ControlToValidate="txtCantidadMaximaJugadores" ErrorMessage="Debe ingresar la cantidad maxima de jugadores" Display="None" SetFocusOnError="true"></asp:RequiredFieldValidator>
+                            <asp:RangeValidator ID="rvCantidadMaximaJugadores" runat="server" ControlToValidate="txtCantidadMaximaJugadores" MaximumValue="100" MinimumValue="0" ErrorMessage="La Cantidad Máxima de Jugadores debe ser un número comprendido entre 0 y 100!" Type="Integer" Display="None"  SetFocusOnError="true"></asp:RangeValidator>
+                            <asp:RequiredFieldValidator ID="rfvCantidadMaximaJugadores" runat="server" ControlToValidate="txtCantidadMaximaJugadores" ErrorMessage="Debe ingresar la Cantidad Máxima de Jugadores!" Display="None" SetFocusOnError="true"></asp:RequiredFieldValidator>
                               </div>
                             <br />
                              

@@ -22,7 +22,7 @@
                 <div class="col-md-2">
                     <div class="panel panel-default">
                         <div class="panel-heading">
-                            <h4>Menu</h4>
+                            <h4>Menú</h4>
                             <h4></h4>
                         </div>
                         <div class="panel-body">

@@ -16,9 +16,14 @@ namespace QueGolazo_.admin
         {
             if (!Page.IsPostBack)
             {
-                DAOFixture gestorFixture = new DAOFixture();//Se crea el gestor de fixture      
+                DAOFixture gestorFixture = new DAOFixture();//Se crea el gestor de fixture  
+                DAOCampeonato gestorCampeonato = new DAOCampeonato(); //Se crea el gestor de campeonato
                 List<Fecha> fechas = gestorFixture.obtenerFixtureDeUnCampeonato(Int32.Parse(Session["idCampeonato"].ToString()));
                 Session["Fechas"] = gestorFixture.obtenerFixtureDeUnCampeonato(Int32.Parse(Session["idCampeonato"].ToString()));
+                
+                Campeonato campeonato = gestorCampeonato.buscarCampeonatoPorId(Int32.Parse(Session["idCampeonato"].ToString()));
+                lblNombreCampeonato.Text = campeonato.nombre;
+
                 repiter_fechas.DataSource = (List<Fecha>)Session["Fechas"];
                 repiter_fechas.DataBind();
                 cargarListaDeFechas(((List<Fecha>)Session["Fechas"]).Count);
