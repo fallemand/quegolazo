@@ -68,7 +68,7 @@ namespace AccesoADatos
             if (respuesta.estado.nombre != Estado.enumNombre.NO_JUGADO)
             {//si el partido se jugó tendrá valores en estos campos
                 respuesta.golesLocal = int.Parse(dr["golesLocal"].ToString());
-                respuesta.golesVisitante = int.Parse(dr["golesLocal"].ToString());
+                respuesta.golesVisitante = int.Parse(dr["golesVisitante"].ToString());
             }
             respuesta.idCampeonato = int.Parse(dr["idCampeonato"].ToString());
             respuesta.idFecha = int.Parse(dr["idFecha"].ToString());

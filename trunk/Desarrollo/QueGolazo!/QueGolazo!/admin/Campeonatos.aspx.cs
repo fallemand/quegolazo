@@ -104,6 +104,8 @@ namespace QueGolazo_
                     btnCargarResultados.Visible = false;
                 }
 
+
+
             }
         }
     }
