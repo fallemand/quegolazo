@@ -46,6 +46,7 @@ namespace QueGolazo_.admin
             Fecha fecha= buscarFecha(Int32.Parse(ddlFechas.SelectedValue));
             repiter_partidos.DataSource = fecha.partidos;
             repiter_partidos.DataBind();
+            ocultarPaneles();
         }
 
         public int ultimaFechaIncompleta()
