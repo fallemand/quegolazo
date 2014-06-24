@@ -14,40 +14,41 @@
                     <h4 class="modal-title" id="myModalLabel">Registrar Nuevo Torneo</h4>
                   </div>
                   <div class="modal-body">
-                    <form id="registrar">
+                    <form id="frmRegistrar" runat="server">
                       <p>Por favor ingrese los datos del campeonato</p>
                       <div class="margin-top"></div>
                       <div class="form-group">
                         <div class="input-group">
                           <span class="input-group-addon"><i class="flaticon-trophy4"></i></span>
-                          <input type="text" class="form-control" name="nombre" placeholder="Nombre del Torneo">
+                          <input type="text" class="form-control" id="txtNombreTorneo" name="txtNombreTorneo" runat="server" placeholder="Nombre del Torneo">
                         </div>
                       </div>
                       <div class="form-group">
                         <div class="input-group">
                           <span class="input-group-addon"><i class="glyphicon glyphicon-cloud"></i></span>
-                          <input type="text" class="form-control" name="nick" placeholder="Nick del Torneo">
+                          <input type="text" class="form-control" id="txtNickTorneo" name="txtNickTorneo" runat="server" placeholder="Nick del Torneo">
                         </div>
                         <span class="help-block">Nombre de la url del torneo. No podrá cambiarlo. www.quegolazo.com/<b>nick-del-torneo</b></span>
                       </div>
                       <div class="form-group">
                         <div class="input-group">
                           <span class="input-group-addon"><i class="glyphicon glyphicon-align-justify"></i></span>
-                          <textarea type="text" class="form-control" name="descripcion" rows="3" onfocus="javascript:if(this.value=='Ingresa una pequeña descripción de tu Torneo') {this.value='';}" onblur="javascript:if(this.value=='') {this.value='Ingresa una pequeña descripción de tu Torneo'}">Ingresa una pequeña descripción de tu Torneo</textarea>
+                          <textarea class="form-control" id="txtDescripcionTorneo" name="txtDescripcionTorneo" runat="server" rows="3" onfocus="javascript:if(this.value=='Ingresa una pequeña descripción de tu Torneo') {this.value='';}" onblur="javascript:if(this.value=='') {this.value='Ingresa una pequeña descripción de tu Torneo'}">Ingresa una pequeña descripción de tu Torneo</textarea>
                         </div>
                       </div>
                       <div class="form-group">
                         <div class="input-group">
-                          <input type="file" id="exampleInputFile">
+                          <input type="file" id="exampleInputFile" runat="server">
                           <p class="help-block">Seleccionar logo del Torneo.</p>
                         </div>
                       </div>
+                      <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
+                        <asp:Button ID="btnRegistrar" CssClass="btn btn-success" runat="server" OnClick="btnRegistrar_Click" Text="Registrar" />
+                      </div>
                     </form>
                   </div>
-                  <div class="modal-footer">
-                    <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
-                    <button type="button" class="btn btn-success">Registrar</button>
-                  </div>
+                
                 </div>
               </div>
             </div>
@@ -137,4 +138,55 @@
       <div class="push"></div>
     </div>
     <!-- Contenido -->
+     <script>
+         $("#frmRegistrar").validate({
+             rules: {
+                 txt: {
+                     minlength: 3,
+                     maxlength: 60,
+                     required: true
+                 },
+                 apellido: {
+                     minlength: 3,
+                     maxlength: 60,
+                     required: true
+                 },
+                 email: {
+                     minlength: 5,
+                     maxlength: 60,
+                     required: true,
+                     email: true
+                 },
+                 clave: {
+                     minlength: 4,
+                     maxlength: 20,
+                     required: true
+                 },
+                 cbTerminos: {
+                     required: true
+                 },
+                 repClave: {
+                     minlength: 4,
+                     maxlength: 20,
+                     required: true,
+                     equalTo: "#clave"
+                 }
+             },
+             highlight: function (element) {
+                 $(element).closest('.form-group').removeClass('has-success').addClass('has-error');
+             },
+             unhighlight: function (element) {
+                 $(element).closest('.form-group').removeClass('has-error').addClass('has-success');
+             },
+             errorElement: 'span',
+             errorClass: 'help-block',
+             errorPlacement: function (error, element) {
+                 if (element.parent('.input-group').length) {
+                     error.insertAfter(element.parent());
+                 } else {
+                     error.insertAfter(element);
+                 }
+             }
+         });
+    </script>
 </asp:Content>
