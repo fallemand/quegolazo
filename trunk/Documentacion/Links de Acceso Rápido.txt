@@ -1,8 +1,6 @@
 Links de Acceso Rápido:
 
-URL Repositorio: https://quegolazo.googlecode.com/svn/trunk/
+URL Repositorio Documentación: https://quegolazo.googlecode.com/svn/trunk/
+URL Repositorio Código: https://quegolazo-code.googlecode.com/svn/trunk/
 
-
-
-
-URL ProyectoGestorDeCampeonatos: https://quegolazo.visualstudio.com/DefaultCollection/ProyectoGestorDeCampeonatos
+URL Herramienta para Gestión Ágil: https://quegolazo.visualstudio.com/DefaultCollection/ProyectoFinal/_home/index
