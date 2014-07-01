@@ -10,25 +10,26 @@
           <div class="form-group">
             <div class="input-group">
               <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
-              <input type="text" class="form-control" name="nombre" placeholder="Nombre" />
+              <input type="text" runat="server" class="form-control" id="nombre" name="nombre" placeholder="Nombre" />
             </div>
           </div>
           <div class="form-group">
             <div class="input-group">
               <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
-              <input type="text" class="form-control" name="apellido" placeholder="Apellido" />
+              <input type="text" class="form-control" runat="server" id="apellido" name="apellido" placeholder="Apellido" />
             </div>
           </div>
           <div class="form-group">
             <div class="input-group">
               <span class="input-group-addon"><i class="glyphicon glyphicon-envelope"></i></span>
-              <input type="text" class="form-control" name="email" placeholder="Email" />
+              <input type="text" class="form-control" runat="server" id="email" name="email" placeholder="Email" />
             </div>
           </div>
           <div class="form-group">
             <div class="input-group">
               <span class="input-group-addon"><i class="glyphicon glyphicon-lock"></i></span>
-              <input type="text" class="form-control" id="clave" name="clave" placeholder="Contraseña" />
+              <input  runat="server" class="form-control" id="clave" name="clave" placeholder="Contraseña" />
+
             </div>
           </div>
           <div class="form-group">

@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using Logica;
 
 namespace QueGolazo
 {
@@ -24,6 +25,20 @@ namespace QueGolazo
             //Hacer aca todo el registro
             //...
             //...
+            try{
+            GestorUsuario gestor = new GestorUsuario();
+            gestor.registrarUsuario(apellido.Value,nombre.Value,email.Value,clave.Value);
+
+
+            panExito.Visible = true;
+
+            }
+            catch(Exception ex)
+            {
+                panFracaso.Visible = true;
+                btnRegistrarse.Enabled = true;
+            }
+
 
             //Si salio todo bien
             bool registroExitoso = true;

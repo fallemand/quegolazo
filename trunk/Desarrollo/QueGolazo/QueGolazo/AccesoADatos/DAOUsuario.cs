@@ -31,13 +31,12 @@ namespace AccesoADatos
                     cmd.Connection = con;
                 }
 
-                string sql = @"INSERT INTO Usuarios (nombre, apellido, email, telefono, contrasenia, codigo, idTipoUsuario)
-                              VALUES (@nombre, @apellido, @email, @telefono, @contrasenia, @codigo, @idTipoUsuario)";
+                string sql = @"INSERT INTO Usuarios (nombre, apellido, email, contrasenia, codigo, idTipoUsuario)
+                              VALUES (@nombre, @apellido, @email, @contrasenia, @codigo, @idTipoUsuario)";
                 cmd.Parameters.Clear();
                 cmd.Parameters.Add(new SqlParameter("@nombre", usuarioNuevo.nombre));
                 cmd.Parameters.Add(new SqlParameter("@apellido", usuarioNuevo.apellido));
-                cmd.Parameters.Add(new SqlParameter("@email", usuarioNuevo.email));
-                cmd.Parameters.Add(new SqlParameter("@telefono", usuarioNuevo.telefono));
+                cmd.Parameters.Add(new SqlParameter("@email", usuarioNuevo.email));                
                 cmd.Parameters.Add(new SqlParameter("@contrasenia", usuarioNuevo.contrasenia));
                 cmd.Parameters.Add(new SqlParameter("@codigo", usuarioNuevo.codigo));
                 cmd.Parameters.Add(new SqlParameter("@idTipoUsuario", usuarioNuevo.tipoUsuario.idTipoUsuario));
@@ -88,7 +87,7 @@ namespace AccesoADatos
                     respuesta.nombre = dr["nombre"].ToString();
                     respuesta.apellido = dr["apellido"].ToString();
                     respuesta.email = dr["email"].ToString();
-                    respuesta.telefono = dr["telefono"].ToString();
+                  
                     respuesta.contrasenia = dr["contrasenia"].ToString();
 
                     if (dr["esActivo"].ToString().Equals("1"))
