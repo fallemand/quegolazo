@@ -1,0 +1,17 @@
+Requerido: required="true"
+Cant Minima de caracteres: minlength="4"
+Cant Maxima de caracteres: maxlength="15"
+Rango de caracteres: rangelength="[4, 15]"
+Numero decimal: number="true"
+Numero entero: digits="true"
+Número mín: min="5"
+Número max: max="1500"
+Rango de numeros: rangelength="[5, 1500]"
+Sin Espacios: noSpace="true"
+Email: email="true"
+URL: url="true"
+Fecha: date="true"
+igual a otro campo: equalTo="#id_del_input"
+
+Ejemplo:
+<input type="text" class="form-control" id="txtUrlTorneo" runat="server" nospace="true" rangelength="[3, 60]" required="true" placeholder="url-del-torneo">
