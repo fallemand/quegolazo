@@ -1,0 +1,156 @@
+<!doctype html>
+
+<html>
+
+  <head>
+    <title>Que Golazo! | Sistema de Gestión de Torneos de Fútbol</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <meta name="viewport" content="width=device-width">
+    <link rel="stylesheet" href="css/bootstrap.css">
+    <link rel="stylesheet" href="css/flaticon.css">
+    <link rel="stylesheet" href="css/quegolazo.css">
+    <script type="text/javascript" src="js/jquery.min.js"></script>
+    <script type="text/javascript" src="js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="js/jquery.validate.js"></script>
+    <script type="text/javascript" src="js/messages_es_AR.js"></script>
+    <style type="text/css">
+      body {
+        padding-top: 50px;
+        padding-bottom: 20px;
+      }
+    </style>
+  </head>
+  <body class="bg-granulado">
+    <div class="navbar navbar-inverse navbar-fixed-top">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+            <span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="#">
+              <img src="img/theme/logo.png" alt="logo" />
+              Que Golazo!
+          </a>
+        </div>
+        <div class="navbar-collapse collapse navbar-right">
+          <form class="navbar-form">
+            <ul class="nav navbar-nav">
+              <p class="navbar-text">Ya tenes una cuenta? <strong><a href="login.html">Ingresá Aquí</a></strong></p>
+            </ul>
+          </form>
+        </div>
+        <!--/.navbar-collapse -->
+      </div>
+    </div>
+
+    <div class="container">
+      <div class="separador">
+        <form id="registrar" class="form-singin">
+              <h2>Registro de Usuarios</h2>
+              <p>Por favor ingrese sus datos</p>
+              <div class="margin-top"></div>
+              <div class="form-group">
+              <div class="input-group">
+                <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+                <input type="text" class="form-control" name="nombre" placeholder="Nombre">
+              </div>
+              </div>
+              <div class="form-group">
+              <div class="input-group">
+                <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+                <input type="text" class="form-control" name="apellido" placeholder="Apellido">
+              </div>
+              </div>
+              <div class="form-group">
+              <div class="input-group">
+                <span class="input-group-addon"><i class="glyphicon glyphicon-envelope"></i></span>
+                <input type="text" class="form-control" name="email" placeholder="Email">
+              </div>
+              </div>
+              <div class="form-group">
+              <div class="input-group">
+                <span class="input-group-addon"><i class="glyphicon glyphicon-lock"></i></span>
+                <input type="text" class="form-control" id="clave" name="clave" placeholder="Contraseña">
+              </div>
+              </div>
+              <div class="form-group">
+              <div class="input-group">
+                <span class="input-group-addon"><i class="glyphicon glyphicon-lock"></i></span>
+                <input type="text" class="form-control" name="repClave" placeholder="Repita Contraseña">
+              </div>
+              </div>
+              <div class="row margin-top">
+                <div class="col-md-6 col-md-offset-1">
+                  <div class="form-group">
+                  <label class="checkbox nomargin-top">
+                    <input type="checkbox" id="cbTerminos" name="cbTerminos" value="remember-me">
+                        Acuerdo con los <a href="">Términos y Condiciones</a>
+                  </label>
+                    </div>
+                </div>
+                <div class="col-md-5">
+                  <button class="btn btn-success pull-right">Registrar</button>
+                </div>
+              </div>
+            </form>
+            <div class="center-block margin-top sub-login">
+              ¿Ya tenes una cuenta? - <a href="login.html" >Ingresar Aquí</a>
+            </div>
+      </div>
+    </div>
+    <!-- /container -->
+    <!-- /main -->
+    <script>
+
+          $('#registrar').validate({
+        rules: {
+            nombre: {
+                minlength: 3,
+                maxlength: 60,
+                required: true
+            },
+            apellido: {
+                minlength: 3,
+                maxlength: 60,
+                required: true
+            },
+            email: {
+                minlength: 5,
+                maxlength: 60,
+                required: true,
+                email: true
+            },
+            clave: {
+                minlength: 4,
+                maxlength: 20,
+                required: true
+            },
+            cbTerminos: {
+                required: true
+            },
+            repClave: {
+                minlength: 4,
+                maxlength: 20,
+                required: true,
+                equalTo: "#clave"
+            }
+        },
+        highlight: function(element) {
+        $(element).closest('.form-group').removeClass('has-success').addClass('has-error');
+        },
+        unhighlight: function(element) {
+            $(element).closest('.form-group').removeClass('has-error').addClass('has-success');
+        },
+        errorElement: 'span',
+        errorClass: 'help-block',
+        errorPlacement: function(error, element) {
+            if(element.parent('.input-group').length) {
+                error.insertAfter(element.parent());
+            } else {
+                error.insertAfter(element);
+            }
+        }
+    });
+    </script>
+  </body>
+</html>

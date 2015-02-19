@@ -1,0 +1,491 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="icon" href="images/favicon.ico">
+    <title>Starter Template for Bootstrap</title>
+    <!-- Bootstrap core CSS -->
+    <link href="css/sandstone.css" rel="stylesheet">
+    <link href="css/flaticon.css" rel="stylesheet">
+    <link href="css/quegolazo.css" rel="stylesheet">
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+  </head>
+
+  <body>
+    <!-- Fixed navbar -->
+    <nav class="navbar navbar-default navbar-inverse navbar-fixed-top">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="#">Torneo Federal</a>
+        </div>
+        <div id="navbar" class="navbar-collapse collapse">
+          <ul class="nav navbar-nav">
+            <li class="active"><a href="#about">Noticias</a></li>
+            <li><a href="#contact">Fixture</a></li>
+            <li><a href="#contact">Posiciones</a></li>
+            <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Estadísticas <span class="caret"></span></a>
+              <ul class="dropdown-menu" role="menu">
+                <li><a href="#contact">Equipos</a></li>
+                <li><a href="#">Goleadores</a></li>
+                <li><a href="#">Tipos de Goles</a></li>
+                <li><a href="#">Rusticos</a></li>
+                <li><a href="#">Arqueros</a></li>
+              </ul>
+            </li>
+            <li><a href="#contact">Sanciones</a></li>
+          </ul>
+          <ul class="hidden-sm nav navbar-nav navbar-right">
+            <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Ediciones <span class="caret"></span></a>
+              <ul class="dropdown-menu" role="menu">
+                <li><a href="#">Edicion 2015</a></li>
+                <li><a href="#">Edicion 2014</a></li>
+                <li><a href="#">Edicion 2013</a></li>
+              </ul>
+              <li><a href="#contact">Contacto</a></li>
+            </li>
+          </ul>
+        </div><!--/.nav-collapse -->
+      </div>
+    </nav>
+    
+    <!-- Page Header -->
+    <header class="sb-page-header">
+        <div class="container">
+          <div class="row">
+            <div class="col-md-3 col-xs-4">
+              <img src="/images/torneo.jpg" alt="Torneo XXXX" class="img-thumbnail image-responsive logo-torneo">
+            </div>
+            <div class="col-md-9 col-xs-8">
+              <h1 class="header-title text-left">Torneo Federal</h1>
+            </div>
+          </div>
+        </div>
+    </header>
+
+    <div class="container">
+      <!-- Main component for a primary marketing message or call to action -->
+      <div class="row">
+        <ol class="breadcrumb">
+          <li><a href="#">Torneo La Rivera</a></li>
+          <li><a href="#">Edición 2014</a></li>
+          <li><a href="#">Fase 1</a></li>
+          <li><a href="#">Fecha 2</a></li>
+          <li class="active">Boca Juniors vs Boca Juniors</li>
+        </ol>
+        <div class="well clearfix">
+          <div class="col-md-4 col-xs-3">
+            <div class="camiseta-equipo text-center">
+              <span class="primera-mitad glyphicon glyphicon-triangle-left" style="color:#2966B8;"></span>
+              <span class="glyphicon glyphicon-triangle-right" style="color:#DFE32D;"></span>
+            </div>
+            <h3 class="text-center">Boca Juniors</h3>
+          </div>
+          <div class="col-xs-6 col-md-4">
+            <div class="row text-center resultado">
+              <div class="col-xs-5 nopadding-left">
+                <h1>9</h1>
+              </div>
+              <div class="col-xs-2 nopadding-right nopadding-left">
+                <h1>-</h1>
+              </div>
+              <div class="col-xs-5 nopadding-right">
+                <h1>9</h1>
+              </div>
+            </div>
+            <div class="row text-center hidden-xs">
+              <div class="col-xs-12">
+                <ul class="list-group">
+                  <li class="list-group-item"><span class="glyphicon glyphicon-calendar" aria-hidden="true"></span> Sabado 27/10/2015</li>
+                  <li class="list-group-item"><span class="glyphicon glyphicon-home" aria-hidden="true"></span> Complejo San Andres</li>
+                  <li class="list-group-item"><span class="label label-success">Partido Jugado</span></li>
+                </ul>
+              </div>
+            </div>
+          </div>
+          <div class="col-xs-3 col-md-4">
+            <img src="images/equipo1.png" class="img-responsive center-block" style="max-height:150px;">
+            <h3 class="text-center">Boca Juniors</h3>
+          </div>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="panel panel-default">
+          <div class="panel-body">
+            <nav class="navbar navbar-default navbar-nav-small nomargin-bottom">
+              <div class="container-fluid">
+                <!-- Brand and toggle get grouped for better mobile display -->
+                <div class="navbar-header">
+                  <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                    <span class="sr-only">Menú</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                  </button>
+                  <span class="navbar-brand visible-xs" href="#">Estadísticas</span>
+                </div>
+
+                <!-- Collect the nav links, forms, and other content for toggling -->
+                <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                  <ul class="nav navbar-nav  nav-justified">
+                    <li class="active"><a href="#resumen" data-toggle="tab"><span class="flaticon-football128"></span> Resumen</a></li>
+                    <li><a href="#titulares" data-toggle="tab"><span class="flaticon-football118"></span> Titulares</a></li>
+                    <li><a href="#goles" data-toggle="tab"><span class="flaticon-football28"></span> Goles</a></li>
+                    <li><a href="#cambios" data-toggle="tab"><span class="flaticon-up23"></span> Cambios</a></li>
+                    <li><a href="#tarjetas" data-toggle="tab"><span class="flaticon-football79"></span> Tarjetas</a></li>
+                    <li><a href="#sanciones" data-toggle="tab"><span class="flaticon-black188"></span> Sanciones</a></li>
+                  </ul>
+                </div><!-- /.navbar-collapse -->
+              </div><!-- /.container-fluid -->
+            </nav>
+            
+            
+            <!-- Tabs -->
+            <div class="tab-content highlight">
+              
+              <!-- Tab Resumen -->
+              <div class="tab-pane fade in active" id="resumen">
+                <table class="table table-striped">
+                  <thead>
+                    <tr>
+                      <th class="col-xs-2 col-md-4 text-center">
+                        <img src="images/equipo1.png" style="max-height:20px;">
+                        Boca Juniors
+                      </th>
+                      <th class="col-xs-8 col-md-4 text-center">VS</th>
+                      <th class="col-xs-2 col-md-4 text-center">
+                        <img src="images/equipo1.png" style="max-height:20px;">
+                        Boca Juniors
+                      </th>
+                    </tr>
+                  </thead>
+                  <tbody class="text-center">
+                    <tr>
+                        <td>
+                          <span class="flaticon-football28"></span>
+                          <span class="flaticon-football28"></span>
+                          <span class="flaticon-football28"></span>
+                        </td>
+                        <td>Goles</td>
+                        <td>
+                          <span class="flaticon-football28"></span>
+                          <span class="flaticon-football28"></span>
+                          <span class="flaticon-football28"></span>
+                          <span class="flaticon-football28"></span>
+                        </td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <span style="color:red;" class="flaticon-football103"></span> 
+                        <span style="color:red;" class="flaticon-football103"></span> 
+                      </td>
+                      <td class="text-center">Tarjetas Rojas</td>
+                      <td>
+                        <span style="color:red;" class="flaticon-football103"></span> 
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <span style="color:yellow;" class="flaticon-football103"></span> 
+                        <span style="color:yellow;" class="flaticon-football103"></span> 
+                      </td>
+                      <td class="text-center">Tarjetas Amarillas</td>
+                      <td>
+                        -                      
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <img class="img-xs" src="images/cambio.png" alt="Cambio" />
+                        <img class="img-xs" src="images/cambio.png" alt="Cambio" />
+                      </td>
+                      <td class="text-center">Cambios</td>
+                      <td>
+                        <img class="img-xs" src="images/cambio.png" alt="Cambio" />
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>
+                        -
+                      </td>
+                      <td class="text-center">Sanciones</td>
+                      <td>
+                        -
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+              
+              <!-- Tab de Jugadores -->
+              <div class="tab-pane fade" id="titulares">
+                <div class="col-sm-6 col-xs-12">
+                  <table class="table table-striped">
+                    <thead>
+                      <tr>
+                        <th class="text-center" colspan="3">
+                          <img src="images/equipo1.png" style="max-height:20px;">
+                          Boca Juniors
+                        </th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td class="col-xs-1"><img src="/images/jugador.jpg" class="img-responsive avatar-xs" alt="" style="height:22px; max-width:30px; "></td>
+                        <td class="col-xs-9">Fernando Gago</td>
+                        <td class="col-xs-2">5</td>
+                      </tr>
+                      <tr>
+                        <td class="col-xs-1"><img src="/images/jugador.jpg" class="img-responsive avatar-xs" alt="" style="height:22px; max-width:30px; "></td>
+                        <td class="col-xs-9">Fernando Gago</td>
+                        <td class="col-xs-2">5</td>
+                      </tr>
+                      <tr>
+                        <td class="col-xs-1"><img src="/images/jugador.jpg" class="img-responsive avatar-xs" alt="" style="height:22px; max-width:30px; "></td>
+                        <td class="col-xs-9">Fernando Gago</td>
+                        <td class="col-xs-2">5</td>
+                      </tr>
+                      <tr>
+                        <td class="col-xs-1"><img src="/images/jugador.jpg" class="img-responsive avatar-xs" alt="" style="height:22px; max-width:30px; "></td>
+                        <td class="col-xs-9">Fernando Gago</td>
+                        <td class="col-xs-2">5</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+                <div class="col-sm-6 col-xs-12">
+                  <table class="table table-striped">
+                    <thead>
+                      <tr>
+                        <th class="text-center" colspan="3">
+                          <img src="images/equipo1.png" style="max-height:20px;">
+                          Boca Juniors
+                        </th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td class="col-xs-1"><img src="/images/jugador.jpg" class="img-responsive avatar-xs" alt="" style="height:22px; max-width:30px; "></td>
+                        <td class="col-xs-9">Fernando Gago</td>
+                        <td class="col-xs-2">5</td>
+                      </tr>
+                      <tr>
+                        <td class="col-xs-1"><img src="/images/jugador.jpg" class="img-responsive avatar-xs" alt="" style="height:22px; max-width:30px; "></td>
+                        <td class="col-xs-9">Fernando Gago</td>
+                        <td class="col-xs-2">5</td>
+                      </tr>
+                      <tr>
+                        <td class="col-xs-1"><img src="/images/jugador.jpg" class="img-responsive avatar-xs" alt="" style="height:22px; max-width:30px; "></td>
+                        <td class="col-xs-9">Fernando Gago</td>
+                        <td class="col-xs-2">5</td>
+                      </tr>
+                      <tr>
+                        <td class="col-xs-1"><img src="/images/jugador.jpg" class="img-responsive avatar-xs" alt="" style="height:22px; max-width:30px; "></td>
+                        <td class="col-xs-9">Fernando Gago</td>
+                        <td class="col-xs-2">5</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+
+              <!-- Tab de Goles -->
+              <div class="tab-pane fade" id="goles">
+                <div class="col-sm-6 col-xs-12">
+                  <table class="table table-striped text-middle">
+                    <thead>
+                      <tr>
+                        <th class="text-center" colspan="3">
+                          <img src="images/equipo1.png" style="max-height:20px;">
+                          Boca Juniors
+                        </th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td class="col-xs-2"><span class="text-lg">18'</span></td>
+                        <td class="col-xs-7"><img src="/images/jugador-mediano.jpg" class="img-circle avatar-sm" alt="" > Fernando Gago</td>
+                        <td class="col-xs-3">Tiro Libre</td>
+                      </tr>
+                      <tr>
+                        <td class="col-xs-2"><span class="text-lg">34'</span></td>
+                        <td class="col-xs-7"><img src="/images/jugador-mediano.jpg" class="img-circle avatar-sm" alt="" > Fernando Gago</td>
+                        <td class="col-xs-3">Tiro Libre</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+                <div class="col-sm-6 col-xs-12">
+                  <table class="table table-striped text-middle">
+                    <thead>
+                      <tr>
+                        <th class="text-center" colspan="3">
+                          <img src="images/equipo1.png" style="max-height:20px;">
+                          Boca Juniors
+                        </th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                          <td class="col-xs-2"><span class="text-lg">18'</span></td>
+                          <td class="col-xs-7"><img src="/images/jugador-mediano.jpg" class="img-circle avatar-sm" alt="" > Fernando Gago</td>
+                          <td class="col-xs-3">Tiro Libre</td>
+                        </tr>
+                        <tr>
+                          <td class="col-xs-2"><span class="text-lg">34'</span></td>
+                          <td class="col-xs-7"><img src="/images/jugador-mediano.jpg" class="img-circle avatar-sm" alt="" > Fernando Gago</td>
+                          <td class="col-xs-3">Tiro Libre</td>
+                        </tr>
+                      </tbody>
+                  </table>
+                </div>
+              </div>
+
+              <!-- Tab de Cambios -->
+              <div class="tab-pane fade" id="cambios">
+                <div class="col-sm-6 col-xs-12">
+                  <table class="table table-striped text-middle">
+                    <thead>
+                      <tr>
+                        <th class="text-center" colspan="3">
+                          <img src="images/equipo1.png" style="max-height:20px;">
+                          Boca Juniors
+                        </th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td class="col-xs-1"><span class="text-lg">34'</span></td>
+                        <td class="col-xs-1"><span class="text-success text-lg glyphicon glyphicon-arrow-up" aria-hidden="true"></span></td>
+                        <td class="col-xs-4"><img src="/images/jugador-mediano.jpg" class="img-circle avatar-sm" alt="" > Fernando Gago</td>
+                        <td class="col-xs-1"><span class="text-danger text-lg glyphicon glyphicon-arrow-down" aria-hidden="true"></span></td>
+                        <td class="col-xs-4"><img src="/images/jugador-mediano.jpg" class="img-circle avatar-sm" alt="" > Fernando Gago</td>
+                      </tr>
+                      <tr>
+                        <td class="col-xs-1"><span class="text-lg">34'</span></td>
+                        <td class="col-xs-1"><span class="text-success text-lg glyphicon glyphicon-arrow-up" aria-hidden="true"></span></td>
+                        <td class="col-xs-4"><img src="/images/jugador-mediano.jpg" class="img-circle avatar-sm" alt="" > Fernando Gago</td>
+                        <td class="col-xs-1"><span class="text-danger text-lg glyphicon glyphicon-arrow-down" aria-hidden="true"></span></td>
+                        <td class="col-xs-4"><img src="/images/jugador-mediano.jpg" class="img-circle avatar-sm" alt="" > Fernando Gago</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+                <div class="col-sm-6 col-xs-12">
+                  <table class="table table-striped text-middle">
+                    <thead>
+                      <tr>
+                        <th class="text-center" colspan="3">
+                          <img src="images/equipo1.png" style="max-height:20px;">
+                          Boca Juniors
+                        </th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td class="col-xs-1"><span class="text-lg">34'</span></td>
+                        <td class="col-xs-1"><span class="text-success text-lg glyphicon glyphicon-arrow-up" aria-hidden="true"></span></td>
+                        <td class="col-xs-4"><img src="/images/jugador-mediano.jpg" class="img-circle avatar-sm" alt="" > Fernando Gago</td>
+                        <td class="col-xs-1"><span class="text-danger text-lg glyphicon glyphicon-arrow-down" aria-hidden="true"></span></td>
+                        <td class="col-xs-4"><img src="/images/jugador-mediano.jpg" class="img-circle avatar-sm" alt="" > Fernando Gago</td>
+                      </tr>
+                      <tr>
+                        <td class="col-xs-1"><span class="text-lg">34'</span></td>
+                        <td class="col-xs-1"><span class="text-success text-lg glyphicon glyphicon-arrow-up" aria-hidden="true"></span></td>
+                        <td class="col-xs-4"><img src="/images/jugador-mediano.jpg" class="img-circle avatar-sm" alt="" > Fernando Gago</td>
+                        <td class="col-xs-1"><span class="text-danger text-lg glyphicon glyphicon-arrow-down" aria-hidden="true"></span></td>
+                        <td class="col-xs-4"><img src="/images/jugador-mediano.jpg" class="img-circle avatar-sm" alt="" > Fernando Gago</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+
+              <!-- Tab de Tarjetas -->
+              <div class="tab-pane fade" id="tarjetas">
+                <div class="col-sm-6 col-xs-12">
+                  <table class="table table-striped text-middle">
+                    <thead>
+                      <tr>
+                        <th class="text-center" colspan="3">
+                          <img src="images/equipo1.png" style="max-height:20px;">
+                          Boca Juniors
+                        </th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td class="col-xs-2"><span class="text-lg">34'</span></td>
+                        <td class="col-xs-8"><img src="/images/jugador-mediano.jpg" class="img-circle avatar-sm" alt="" > Fernando Gago</td>
+                        <td class="col-xs-2"><img src="/images/tarjeta-roja.png" class="img-circle avatar-sm" alt="" ></td>
+                      </tr>
+                      <tr>
+                        <td class="col-xs-2"><span class="text-lg">34'</span></td>
+                        <td class="col-xs-8"><img src="/images/jugador-mediano.jpg" class="img-circle avatar-sm" alt="" > Fernando Gago</td>
+                        <td class="col-xs-2"><img src="/images/tarjeta-amarilla.png" class="img-circle avatar-sm" alt="" ></td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+                <div class="col-sm-6 col-xs-12">
+                  <table class="table table-striped text-middle">
+                    <thead>
+                      <tr>
+                        <th class="text-center" colspan="3">
+                          <img src="images/equipo1.png" style="max-height:20px;">
+                          Boca Juniors
+                        </th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td class="col-xs-2"><span class="text-lg">34'</span></td>
+                        <td class="col-xs-8"><img src="/images/jugador-mediano.jpg" class="img-circle avatar-sm" alt="" > Fernando Gago</td>
+                        <td class="col-xs-2"><img src="/images/tarjeta-roja.png" class="img-circle avatar-sm" alt="" ></td>
+                      </tr>
+                      <tr>
+                        <td class="col-xs-2"><span class="text-lg">34'</span></td>
+                        <td class="col-xs-8"><img src="/images/jugador-mediano.jpg" class="img-circle avatar-sm" alt="" > Fernando Gago</td>
+                        <td class="col-xs-2"><img src="/images/tarjeta-amarilla.png" class="img-circle avatar-sm" alt="" ></td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+
+              <!-- Tab de Sanciones -->
+              <div class="tab-pane fade" id="sanciones">
+                sanciones
+              </div>
+              
+            </div>
+          </div>
+        </div>
+      </div>
+    </div> <!-- /container -->
+
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="/js/jquery.min.js"></script>
+    <script src="/js/bootstrap.min.js"></script>
+    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+    <script src="/js/ie10-viewport-bug-workaround.js"></script>
+  </body>
+</html>
