@@ -1,7 +1,7 @@
 body {
   padding-top: 51px;
-  background-color: #2D2D2D;
-  background-image: url('../images/bg-patterns/b3.png');
+  background-color: #64B83B;
+  background-image: url('../images/bg-patterns/b5.png');
   /*background: url('../images/backgrounds/bg-2.jpg') no-repeat center center fixed;
   background-color: #ccc;
   -webkit-background-size: cover;
@@ -12,7 +12,7 @@ body {
 .resultado h1 {
   font-size: 55px;
   font-weight: 700;
-  text-shadow: 1px 1px 1px rgba(210, 210, 210, 0.6);
+  text-shadow: 2px 1px 1px rgba(30, 30, 30, 0.6);
 }
 
 .nomargin-right{
@@ -50,6 +50,9 @@ body {
   height:200px;
   margin-bottom: 20px;
   font-size: 20px;
+  -webkit-box-shadow: 0px 4px 6px 0px rgba(0,0,0,0.75);
+  -moz-box-shadow: 0px 4px 6px 0px rgba(0,0,0,0.75);
+  box-shadow: 0px 4px 6px 0px rgba(0,0,0,0.75);
 }
 
 .navbar-nav.nav-justified > li{
@@ -108,12 +111,25 @@ body {
 
 .camiseta-equipo {
   font-size:150px;
-  line-height: 20px;
+  line-height: 120px;
+  width:100%;
+  margin-top: 20px;
+  display: block;
+  text-align: center;
+}
+.camiseta-equipo div {
+  width:75px;
+  display: inline-block;
+  overflow:hidden;
 }
 
-.primera-mitad {
-  letter-spacing: -117px;
+.camiseta-equipo .segunda-mitad i {
+  margin-left:-75px;
 }
+
+/*.primera-mitad {
+  letter-spacing: -117px;
+}*/
 .img-xs {
   max-width: 22px;
   max-height: 22px;
@@ -126,9 +142,6 @@ body {
   h1, .h1, h2, .h2, h3, .h3 {
     margin-top: 12px;
     margin-bottom: 6px;
-  }
-  .resultado h1 {
-    font-size: 2.2em;
   }
   h1 {
     font-size: 1.8em;
@@ -150,8 +163,8 @@ body {
   }
   .header-title {
     font-size:30px;
-    text-shadow: 0px 1px 0px #999;
     line-height:30px;
+    margin-top:0px;
   }
   .sb-page-header {
     position: relative;
@@ -166,5 +179,58 @@ body {
   }
   .logo-torneo {
   max-height: 70px;
+  }
+  .camiseta-equipo {
+    font-size:120px;
+    line-height: 100px;
+  }
+  .camiseta-equipo div {
+    width:60px;
+  }
+  .camiseta-equipo .segunda-mitad i {
+    margin-left:-75px;
+  }
+  .camiseta-equipo {
+    margin-top: 0px;
+  }
+  .list-group {
+    margin-bottom: 0px;
+  }
+}
+
+@media (max-width: 550px) {
+  .camiseta-equipo {
+    font-size:90px;
+    line-height: 80px;
+  }
+  .camiseta-equipo div {
+    width:45px;
+  }
+  .camiseta-equipo .segunda-mitad i {
+    margin-left:-47px;
+  }
+}
+
+@media (max-width: 420px) {
+  h1, .h1, h2, .h2, h3, .h3 {
+    margin-top: 6px;
+    margin-bottom: 3px;
+  }
+  .header-title {
+    font-size:25px;
+    text-shadow: 0px 1px 0px #666, 0px 2px 0px #555, 0px 3px 0px #444, 0px 4px 0px #333, 0px 5px 7px #222
+  }
+  .camiseta-equipo {
+    font-size:60px;
+    line-height: 50px;
+  }
+  .camiseta-equipo div {
+    width:30px;
+  }
+  .camiseta-equipo .segunda-mitad i {
+    margin-left:-35px;
+  }
+  .list-group-item {
+    padding: 5px 8px;
   }
 }
