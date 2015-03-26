@@ -3,6 +3,13 @@
   font-weight: 700;
   text-shadow: 2px 1px 1px rgba(30, 30, 30, 0.6);
 }
+
+.resultado span {
+  font-size: 65px;
+  line-height: 60px;
+  color: #222;
+}
+
 .resultado h2 {
   font-size: 45px;
   font-weight: 700;
@@ -95,6 +102,11 @@
   max-width:40px;
 }
 
+.avatar-md {
+  height:55px; 
+  max-width:60px;
+}
+
 .logo-torneo {
   max-height: 145px;
 }
@@ -168,24 +180,6 @@
   h1, .h1, h2, .h2, h3, .h3 {
     margin-top: 12px;
     margin-bottom: 6px;
-  }
-  h1 {
-    font-size: 1.8em;
-  }
-  h2 {
-    font-size: 1.5em;
-  }
-  h3 {
-    font-size: 1.2em;
-  }
-  h4 {
-    font-size: 0.88em;
-  }
-  h5 {
-    font-size: 0.7em;
-  }
-  h6 {
-    font-size: 0.59em;
   }
   .header-title {
     font-size:30px;
