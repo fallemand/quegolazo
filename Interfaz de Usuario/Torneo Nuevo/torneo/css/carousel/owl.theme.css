@@ -77,20 +77,24 @@
 
 /* Styling Next and Prev buttons  Titles -----------------------------*/
 
-.single-carousel  .owl-prev,
+.proximos-partidos .owl-prev,
+.proximos-partidos .owl-next,
+.single-carousel .owl-prev,
 .single-carousel .owl-next{	
 	position: absolute;
 	top: 18%;
 	opacity: 0.5;
 }
+.proximos-partidos:hover .owl-prev,
 .single-carousel:hover .owl-prev,
+.proximos-partidos:hover .owl-next,
 .single-carousel:hover .owl-next{
 	opacity: 1;
 }
-.single-carousel .owl-prev{
+.proximos-partidos .owl-prev, .single-carousel .owl-prev{
 	left: -5px;
 }
-.single-carousel  .owl-next{
+.proximos-partidos .owl-next, .single-carousel  .owl-next{
 	right:-5px;
 }
 
