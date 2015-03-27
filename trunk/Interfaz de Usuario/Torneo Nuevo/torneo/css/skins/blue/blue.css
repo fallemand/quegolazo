@@ -1,5 +1,13 @@
 /* Backgrounds ----------------------------------------------------------*/
 
+.theme-bg-color {
+  background-color: #0088cc !important;
+}
+
+.theme-bg-color-2 {
+  background-color: #61A1C2 !important;
+}
+
 .camera_prevThumbs, .camera_nextThumbs, .camera_prev, .camera_next, .camera_commands, .camera_thumbs_cont,
 .camera_wrap .camera_pag .camera_pag_ul li.cameracurrent > span,
 .btn-primary,
