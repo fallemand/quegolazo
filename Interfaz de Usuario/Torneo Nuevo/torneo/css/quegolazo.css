@@ -1,7 +1,8 @@
 .resultado h1 {
   font-size: 55px;
   font-weight: 700;
-  text-shadow: 2px 1px 1px rgba(30, 30, 30, 0.6);
+  text-shadow: 2px 1px 1px rgba(202, 202, 202, 0.6);
+  color: #FAFAFA;
 }
 
 .resultado span {
@@ -143,6 +144,8 @@
 
 .score {
   background-image: url(/img/bg-score.png);
+  border-left: 7px solid;
+  border-right: 7px solid;
 }
 
 .score a{
@@ -322,7 +325,7 @@
     font-size: 16px;
 }
 
-.li-partido .text .equipos a.estado {
+.li-partido .text .equipos p.estado {
   font-size: 10px;
   color: #FFF;
   padding: 3px 7px;
@@ -331,6 +334,10 @@
   text-transform: uppercase;
   display: inline-block;
   float: none;
+}
+
+.li-partido .text .equipos p.estado.jugado {
+  font-size: 12px;
 }
 
 
@@ -342,4 +349,13 @@
 .proximos-partidos.owl-theme .owl-controls .owl-buttons div {
   padding:0px 6px;
   margin-top:15px;
+}
+
+.proximos-partidos-title {
+  margin-top: -24px;
+  margin-left: -15px;
+  margin-bottom: 0px;
+  padding-left: 10px;
+  font-size: 13px;
+  line-height: 25px;
 }

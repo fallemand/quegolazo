@@ -146,13 +146,13 @@ $(document).ready(function($) {
   //=================================== Slide Proximos Partidos  ==============================//
 	 
 	$(".proximos-partidos").owlCarousel({
-      items : 8,
-		  autoPlay: true,  
+        items : 8,
+		autoPlay: true,  
     	navigation : true,
     	autoHeight : true,
     	slideSpeed : 200,
-    	singleItem: false,
-    	pagination : false
+    	pagination : false,
+        itemsCustom: [[0, 1],[400, 2], [500, 3],[600, 4], [800, 5], [1000, 6], [1100, 7], [1200, 8]]
 	});
 
   //=================================== Carousel Blog  ==================================//
