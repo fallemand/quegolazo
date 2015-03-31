@@ -21,10 +21,10 @@
     var skin = "green"; // green (default), red ,yellow,purple,blue, orange, purple, pink, cocoa, custom 
 
     // Boxed value
-    var layout = "layout-semiboxed"; // layout-semiboxed(default), layout-boxed, layout-boxed-margin ,layout-wide
+    var layout = "layout-boxed-margin"; // layout-semiboxed(default), layout-boxed, layout-boxed-margin ,layout-wide
 
     //Only in boxed version 
-    var bg = "none";  // none (default), bg1, bg2, bg3, bg4, bg5, bg6, bg7, bg8, bg9, bg10, bg11 
+    var bg = "bg20";  // none (default), bg1, bg2, bg3, bg4, bg5, bg6, bg7, bg8, bg9, bg10, bg11 
 
     // Theme Panel - disable panel options
     var themepanel = "1"; // 1 (default - enable), 0 ( disable)
