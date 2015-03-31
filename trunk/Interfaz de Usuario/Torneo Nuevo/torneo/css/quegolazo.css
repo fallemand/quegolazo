@@ -239,6 +239,9 @@
   .camiseta-equipo .segunda-mitad i {
     margin-left:-47px;
   }
+  .mobile-margin-top {
+    margin-top:15px;
+  }
 }
 
 @media (max-width: 420px) {
@@ -265,6 +268,26 @@
   }
   .padding-top {
     padding-top: 20px;
+  }
+  .score {
+    font-size:12px;
+  }
+  .score .resultado h1 {
+    font-size: 40px;
+  }
+  .score h3 {
+    font-size: 14px;
+  }
+  .crumbs {
+    padding: 5px 0px;
+  }
+  .crumbs ul li {
+    font-size:14px;
+    line-height:12px;
+  }
+  .headerbox h1 {
+    font-size: 25px;
+    line-height: 20px;
   }
 }
 .li-partido {

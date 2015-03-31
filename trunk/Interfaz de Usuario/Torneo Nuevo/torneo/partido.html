@@ -64,9 +64,9 @@
             <span>LAYOUT STYLE</span>
             <ul class="layout-style">      
                 <li class="wide">Wide</li>
-                <li class="semiboxed active">Semiboxed</li> 
+                <li class="semiboxed">Semiboxed</li> 
                 <li class="boxed">Boxed</li> 
-                <li class="boxed-margin">Boxed Margin</li>               
+                <li class="boxed-margin active">Boxed Margin</li>               
             </ul>               
             <div class="patterns">
                 <span>BACKGROUND PATTERNS</span>
@@ -104,7 +104,7 @@
         <!-- End Theme-options -->      
 
         <!-- layout-->
-        <div id="layout">
+        <div id="layout" class="layout-boxed-margin">
             <!-- Header-->
             <header>
                 <!-- End headerbox-->
@@ -226,7 +226,7 @@
 
                 <!-- Content Central -->
                 <div class="container padding-top">
-                    <div class="row">
+                    <div class="row mobile-margin-top">
                         <div class="col-md-12">
                             <!-- content Players --> 
                             <div class="panel-box">
@@ -797,7 +797,47 @@
 
                           <!-- Tab de Sanciones -->
                           <div class="tab-pane fade" id="sanciones">
-                            sanciones
+                            <div class="col-sm-6 col-xs-12">
+                              <table class="table table-striped">
+                                <thead>
+                                  <tr>
+                                    <th class="text-center" colspan="3">
+                                      <img src="img/equipo1.png" style="max-height:20px;">
+                                      Boca Juniors
+                                    </th>
+                                  </tr>
+                                </thead>
+                                <tbody>
+                                  <tr>
+                                    <td class="col-xs-1"><img src="/img/jugador.jpg" class="img-responsive avatar-xs" alt="" style="height:22px; max-width:30px; "></td>
+                                    <td class="col-xs-4">Fernando Gago</td>
+                                    <td class="col-xs-7">Sancionado por 5 Fechas</td>
+                                  </tr>
+                                  <tr>
+                                    <td class="col-xs-1"><img src="/img/jugador.jpg" class="img-responsive avatar-xs" alt="" style="height:22px; max-width:30px; "></td>
+                                    <td class="col-xs-4">Fernando Gago</td>
+                                    <td class="col-xs-7">Sancionado hasta el 15/12</td>
+                                  </tr>
+                                </tbody>
+                              </table>
+                            </div>
+                            <div class="col-sm-6 col-xs-12">
+                              <table class="table table-striped">
+                                <thead>
+                                  <tr>
+                                    <th class="text-center" colspan="3">
+                                      <img src="img/equipo1.png" style="max-height:20px;">
+                                      Boca Juniors
+                                    </th>
+                                  </tr>
+                                </thead>
+                                <tbody>
+                                  <tr>
+                                    <td>No Registra Sanciones</td>
+                                  </tr>
+                                </tbody>
+                              </table>
+                            </div>
                           </div>
 
                         </div>
@@ -1036,43 +1076,49 @@
                             <!-- Info -->
                             <div class="panel-box">
                                 <div class="titles">
-                                    <h4><i class="fa fa-rocket"></i>About Template</h4>
+                                    <h4><i class="fa fa-camera"></i>Fotos del Partido</h4>
                                 </div>
                                 <!-- Info ABout --> 
                                 <div class="row">
-                                    <div class="col-md-4">
-                                        <!-- Mini SLide --> 
-                                        <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
-                                          <ol class="carousel-indicators">
-                                            <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
-                                            <li data-target="#carousel-example-generic" data-slide-to="1" class=""></li>
-                                            <li data-target="#carousel-example-generic" data-slide-to="2" class=""></li>
-                                          </ol>
-                                          <div class="carousel-inner">
-                                            <div class="item active">
-                                              <img src="img/blog/1.jpg">
-                                            </div>
-                                            <div class="item">
-                                              <img src="img/blog/2.jpg">
-                                            </div>
-                                            <div class="item">
-                                              <img src="img/blog/3.jpg">
-                                            </div>
-                                          </div>
-                                          <a class="left carousel-control" href="#carousel-example-generic" data-slide="prev">
-                                            <span class="glyphicon glyphicon-chevron-left"></span>
-                                          </a>
-                                          <a class="right carousel-control" href="#carousel-example-generic" data-slide="next">
-                                            <span class="glyphicon glyphicon-chevron-right"></span>
-                                          </a>
-                                        </div>
-                                        <!-- End Mini SLide --> 
-                                    </div>
-                                    <div class="col-md-8">
-                                        <h4>Pellentesque habitantu vulputate</h4>
-                                        <p>Pellentesque habitantu vulputate magna eros eu erat. Aliquam erat volutpat. Nam dui mi, tincidunt quis, accumsan porttitor, facilisis luctus, metus Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae, ultricies eget, tempor sit amet, ante.</p>
+                                        <!-- Items Gallery filters-->
+                                        <div class="portfolioContainer">
 
-                                        <p> Donec Mauris placerat eleifend leo. Quisque sit amet est et sapien ullamcorper pharetra. Vestibulum erat wisi, condimentum sed, commodo vitae, ornare sit amet, wisi. Aenean fermentum, elit eget tincidunt condimentum, eros ipsum rutrum orci, sagittis tempus lacus enim ac dui. Donec non enim in turpis pulvinar facilisis. </p>
+                                            <!-- Item Gallery-->
+                                            <div class="col-xs-6 col-sm-6 col-md-3 soccer">
+                                                <div class="img-hover">
+                                                    <img src="img/gallery/1.jpg" alt="" class="img-responsive">
+                                                    <div class="overlay"><a href="img/gallery/1.jpg" class="fancybox">+</a></div>
+                                                </div>
+                                            </div>
+                                            <!-- End Item Gallery-->
+
+                                            <!-- Item Gallery-->
+                                            <div class="col-xs-6 col-sm-6 col-md-3 motocross">
+                                                <div class="img-hover">
+                                                    <img src="img/gallery/2.jpg" alt="" class="img-responsive">
+                                                    <div class="overlay"><a href="img/gallery/2.jpg" class="fancybox">+</a></div>
+                                                </div>
+                                            </div>
+                                            <!-- End Item Gallery-->
+
+                                            <!-- Item Gallery-->
+                                            <div class="col-xs-6 col-sm-6 col-md-3 motocross">
+                                                <div class="img-hover">
+                                                    <img src="img/gallery/3.jpg" alt="" class="img-responsive">
+                                                    <div class="overlay"><a href="img/gallery/3.jpg" class="fancybox">+</a></div>
+                                                </div>
+                                            </div>
+                                            <!-- End Item Gallery-->
+
+                                            <!-- Item Gallery-->
+                                            <div class="col-xs-6 col-sm-6 col-md-3 bmx">
+                                                <div class="img-hover">
+                                                    <img src="img/gallery/4.jpg" alt="" class="img-responsive">
+                                                    <div class="overlay"><a href="img/gallery/4.jpg" class="fancybox">+</a></div>
+                                                </div>
+                                            </div>
+                                            <!-- End Item Gallery-->  
+                                        <!-- End Items Gallery filters-->       
                                     </div>
                                 </div>
                                 <!-- End Info ABout --> 
