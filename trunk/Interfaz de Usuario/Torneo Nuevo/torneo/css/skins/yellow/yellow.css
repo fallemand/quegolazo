@@ -3,7 +3,10 @@
 .theme-bg-color {
   background-color: #e2d62d !important;
 }
-
+.theme-border {
+  border-left-color: #e2d62d !important;
+  border-right-color: #e2d62d !important;
+}
 .theme-bg-color-2 {
   background-color: #DFD54B !important;
 }

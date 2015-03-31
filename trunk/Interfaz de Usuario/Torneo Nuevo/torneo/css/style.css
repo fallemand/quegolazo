@@ -185,7 +185,7 @@ ul.single-carousel,
 	background-color: #fcfcfc;
 }
 .bg-dark{
-	background-color: #18191B;
+	background-color: #18191B !important;
 }
 .dark-home{
 	height: 440px;
