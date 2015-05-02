@@ -1,0 +1,3 @@
+- Falta la cantidad de commits en el ultimo sprint
+- Falta actualizar la velocidad en funcion del ultimo sprint
+- Falta actualizar la metrica cantidad de commits del ultimo sprint
