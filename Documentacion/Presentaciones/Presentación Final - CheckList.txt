@@ -1,0 +1,96 @@
+Armar red ad hoc.
+Conectar Teamviewer
+Opmitizar velocidad
+pass red y teamviewer: quegolazo01
+
+
+-Restaurar la base de datos.
+-Deployar aplicacion
+-Poner presentacion
+-Quitar barra marcadores
+Pestañas:
+  *Login Admin
+  *AFA Con varios estilos
+  
+ Toni:
+ Complejo: Bombonera Clausurada
+ Gol penal osvaldo regalado
+ Cambiar puestos. Gas pimienta.
+ 
+ Facu: 
+ Abrir link torneo en otra pestaña, para luego registrar partido.
+ Abrir noticia en otra pestaña.
+ Abrir equipo en otra pestaña
+ 
+ cargarEstilosVisuales({
+   bodyClass: "none",
+   colorDeFondo: "rgb(40, 38, 41)",
+   colorDestacado: "/torneo/css/skins/orange-dark.css",
+   colorHeader: "rgb(48, 68, 93)",
+   estiloPagina: "layout-boxed-margin",
+   patronDeFondo: "url(/torneo/img/bg-theme/a1.png)",
+   patronHeader: "url(/torneo/img/bg-theme/19.png)",
+   theme: "/torneo/css/bootstrap/superhero.css"
+});
+$('h1.titulo-torneo').text("Torneo LIFUS Córdoba")
+
+ cargarEstilosVisuales({
+     bodyClass: "none",
+     colorDeFondo: "rgb(40, 38, 41)",
+     colorDestacado: "/torneo/css/skins/black.css",
+     colorHeader: "rgb(40, 38, 41)",
+     estiloPagina: "layout-semiboxed",
+     patronDeFondo: "url(/torneo/img/bg-theme/3.png)",
+     patronHeader: "url(/torneo/img/bg-theme/8.png)",
+     theme: "/torneo/css/bootstrap/cyborg.css"
+});
+$('h1.titulo-torneo').text("La Cachiporra")
+ 
+ cargarEstilosVisuales({
+     bodyClass: "none fixed",
+     colorDeFondo: "rgb(95, 165, 78)",
+     colorDestacado: "/torneo/css/skins/grey.css",
+     colorHeader: "rgb(112, 113, 117)",
+     estiloPagina: "layout-boxed-margin",
+     patronDeFondo: "url(/torneo/img/bg-theme/c8.png)",
+     patronHeader: "url(/torneo/img/bg-theme/3.png)",
+     theme: "/torneo/css/bootstrap/slate.css"
+});
+$('h1.titulo-torneo').text("Torneo Mirta X Siempre")
+ 
+ cargarEstilosVisuales({
+     bodyClass: "none fixed",
+     colorDeFondo: "rgb(95, 165, 78)",
+     colorDestacado: "/torneo/css/skins/cocoa.css",
+     colorHeader: "rgb(90, 71, 57)",
+     estiloPagina: "layout-wide",
+     patronDeFondo: "url(/torneo/img/bg-theme/c6.png)",
+     patronHeader: "url(/torneo/img/bg-theme/4.png)",
+     theme: "/torneo/css/bootstrap/cyborg.css"
+});
+$('h1.titulo-torneo').text("Torneo #NiUnaMenos")
+ 
+ cargarEstilosVisuales({
+     bodyClass: "none",
+     colorDeFondo: "rgb(95, 165, 78)",
+     colorDestacado: "/torneo/css/skins/red-dark.css",
+     colorHeader: "rgb(154, 48, 52)",
+     estiloPagina: "layout-wide",
+     patronDeFondo: "url(/torneo/img/bg-theme/a2.png)",
+     patronHeader: "url(/torneo/img/bg-theme/19.png)",
+     theme: "/torneo/css/bootstrap/bootstrap.css"
+});
+$('h1.titulo-torneo').text("Al Pan Pan y al Vino QueGolazo!")
+
+cargarEstilosVisuales({
+     bodyClass: "none",
+     colorDeFondo: "rgb(243, 135, 37)",
+     colorDestacado: "/torneo/css/skins/orange-dark.css",
+     colorHeader: "rgb(243, 135, 37)",
+     estiloPagina: "layout-semiboxed",
+     patronDeFondo: "url(/torneo/img/bg-theme/8.png)",
+     patronHeader: "url(/torneo/img/bg-theme/8.png)",
+     theme: "/torneo/css/bootstrap/bootstrap.css"
+});
+$('h1.titulo-torneo').text("Torneo Los Naranjitas")
+ 
